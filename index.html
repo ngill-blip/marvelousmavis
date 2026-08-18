@@ -73,7 +73,11 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    HEADER
    ============================================================ */
-.masthead { background: var(--paper); }
+.masthead {
+  position: relative;
+  background: var(--paper);
+  overflow: hidden;
+}
 
 .masthead-art {
   display: block;
@@ -81,29 +85,63 @@ img { display: block; max-width: 100%; }
   height: auto;
 }
 
+/* Scrim sits only over the lower band, so the room stays readable */
+.masthead::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 58%;
+  background: linear-gradient(to bottom,
+    rgba(26,18,44,0) 0%,
+    rgba(26,18,44,0.14) 34%,
+    rgba(26,18,44,0.42) 62%,
+    rgba(26,18,44,0.60) 100%);
+  pointer-events: none;
+}
+
+/* Name sits above her signature, which lives in the bottom-left corner */
 .masthead-inner {
-  padding: clamp(38px, 5.5vw, 64px) var(--gutter) clamp(30px, 4vw, 48px);
+  position: absolute;
+  z-index: 2;
+  left: 0; right: 0;
+  bottom: 19%;
   max-width: var(--measure);
   margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 .masthead h1 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
-  color: var(--ink);
+  color: #fff;
+  text-shadow: 0 2px 28px rgba(20,12,38,0.55), 0 1px 6px rgba(20,12,38,0.35);
 }
 
 .masthead .dates {
-  margin-top: 0.85rem;
+  margin-top: 0.8rem;
   font-family: var(--sans);
   font-weight: 400;
   font-size: 0.78rem;
   letter-spacing: 0.26em;
   text-indent: 0.26em;
-  color: var(--ink-3);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 16px rgba(20,12,38,0.6);
+}
+
+@media (max-width: 760px) {
+  .masthead-inner { bottom: 21%; }
+  .masthead::after {
+    height: 74%;
+    background: linear-gradient(to bottom,
+      rgba(26,18,44,0) 0%,
+      rgba(26,18,44,0.26) 30%,
+      rgba(26,18,44,0.56) 58%,
+      rgba(26,18,44,0.68) 100%);
+  }
+  .masthead h1 { text-shadow: 0 2px 20px rgba(20,12,38,0.8), 0 1px 4px rgba(20,12,38,0.6); }
 }
 
 /* ============================================================
