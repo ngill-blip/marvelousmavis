@@ -616,6 +616,68 @@ a { color: var(--accent); }
 @media (max-width: 560px) { .photostrip { zoom: 0.44; } }
 
 /* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.photostrip img { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(18, 14, 26, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+.lightbox.open { display: flex; }
+.lightbox.shown { opacity: 1; }
+
+.lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.lb-btn {
+  position: absolute;
+  background: none;
+  border: 0;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-family: var(--sans);
+  line-height: 1;
+  padding: 10px 16px;
+  transition: color .18s ease;
+}
+.lb-btn:hover, .lb-btn:focus-visible { color: #fff; }
+
+.lb-close { top: 10px; right: 14px; font-size: 2rem; font-weight: 300; }
+.lb-prev, .lb-next { top: 50%; transform: translateY(-50%); font-size: 2.6rem; font-weight: 300; }
+.lb-prev { left: 6px; }
+.lb-next { right: 6px; }
+
+.lb-count {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 620px) {
+  .lb-prev, .lb-next { font-size: 2rem; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 720px) {
@@ -1014,6 +1076,114 @@ a { color: var(--accent); }
     es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('in-view'); });
   }, { threshold: 0.2 });
   document.querySelectorAll('.moment').forEach(function (m) { io.observe(m); });
+})();
+</script>
+
+<script>
+/* Photo strip: gentle automatic drift + click to enlarge */
+(function () {
+  var strip = document.querySelector('.photostrip');
+  if (!strip) return;
+  var imgs = [].slice.call(strip.querySelectorAll('img'));
+  if (!imgs.length) return;
+
+  /* ---------- slow automatic drift ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SPEED = 11;                 /* px per second, deliberately barely there */
+  var inView = false, holdUntil = 0, last = null;
+
+  function hold(ms) { holdUntil = Math.max(holdUntil, performance.now() + ms); }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { inView = es[0].isIntersecting; },
+      { threshold: 0.12 }).observe(strip);
+  }
+  ['pointerdown', 'wheel', 'touchstart', 'mouseenter'].forEach(function (ev) {
+    strip.addEventListener(ev, function () { hold(2600); }, { passive: true });
+  });
+  strip.addEventListener('mouseleave', function () { hold(700); }, { passive: true });
+
+  /* scrollLeft snaps to whole pixels, so sub-pixel steps would be lost.
+     Keep the true position in a float and write it out each frame. */
+  var pos = strip.scrollLeft;
+  strip.addEventListener('scroll', function () {
+    if (Math.abs(strip.scrollLeft - pos) > 2) pos = strip.scrollLeft;
+  }, { passive: true });
+
+  function tick(t) {
+    if (last === null) last = t;
+    var dt = (t - last) / 1000; last = t;
+    if (!reduce && inView && t > holdUntil && dt < 0.4 && !document.hidden) {
+      var max = strip.scrollWidth - strip.clientWidth;
+      if (pos < max - 1) {
+        pos += SPEED * dt;
+        strip.scrollLeft = pos;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* ---------- lightbox ---------- */
+  var box = null, idx = -1, lbImg = null, lbCount = null, lastFocus = null;
+
+  function build() {
+    box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Photograph');
+    box.innerHTML =
+      '<button class="lb-btn lb-close" aria-label="Close">×</button>' +
+      '<button class="lb-btn lb-prev" aria-label="Previous photograph">‹</button>' +
+      '<img class="lb-img" alt="">' +
+      '<button class="lb-btn lb-next" aria-label="Next photograph">›</button>' +
+      '<p class="lb-count"></p>';
+    document.body.appendChild(box);
+    lbImg = box.querySelector('.lb-img');
+    lbCount = box.querySelector('.lb-count');
+    box.addEventListener('click', function (e) { if (e.target === box || e.target === lbImg) close(); });
+    box.querySelector('.lb-close').addEventListener('click', close);
+    box.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+    box.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+  }
+
+  function show(i) {
+    if (!box) build();
+    idx = (i + imgs.length) % imgs.length;
+    lbImg.src = imgs[idx].currentSrc || imgs[idx].src;
+    lbCount.textContent = (idx + 1) + ' / ' + imgs.length;
+    box.classList.add('open');
+    requestAnimationFrame(function () { box.classList.add('shown'); });
+    document.documentElement.style.overflow = 'hidden';
+    hold(1e9);
+    box.querySelector('.lb-close').focus();
+  }
+
+  function close() {
+    if (!box) return;
+    box.classList.remove('shown');
+    document.documentElement.style.overflow = '';
+    holdUntil = performance.now() + 1200;
+    setTimeout(function () { box.classList.remove('open'); }, 220);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  imgs.forEach(function (im, i) {
+    im.setAttribute('tabindex', '0');
+    im.setAttribute('role', 'button');
+    im.addEventListener('click', function () { lastFocus = im; show(i); });
+    im.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lastFocus = im; show(i); }
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!box || !box.classList.contains('open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
 })();
 </script>
 
