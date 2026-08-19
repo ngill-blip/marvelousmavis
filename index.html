@@ -267,9 +267,11 @@ section { padding: clamp(56px, 8vw, 92px) 0; }
 
 .lines {
   margin: 16px 0 0;
-  border-top: 1px solid var(--rule);
   list-style: none;
 }
+
+/* only the divider between the two numbers remains */
+.lines li:last-child { border-bottom: none; }
 
 .lines li {
   display: flex;
@@ -678,6 +680,16 @@ a { color: var(--accent); }
 }
 
 /* ============================================================
+   FULL-BLEED ARTWORK BREAK
+   ============================================================ */
+.artbreak {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: clamp(30px, 4vw, 52px) 0;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 720px) {
@@ -766,7 +778,7 @@ a { color: var(--accent); }
 <section class="moments">
   <div class="wrap">
     <div class="section-head">
-      <h2>Moments</h2>
+      <h2>My Marvelous Ms.Mavis..</h2>
     </div>
 
     <article class="moment">
@@ -837,6 +849,8 @@ a { color: var(--accent); }
         <p>My favourite memory is when we were doing blind karaoke on our phones. I said &ldquo;Idk which song this is, play Motion Sickness by Phoebe Bridgers and I&rsquo;ll know!!&rdquo; She says &ldquo;bro hahaha I can&rsquo;t, I need to record this! just try to guess&rdquo; and starts recording. I say I don&rsquo;t knowwww which song that is, and then when the round ends she turns her phone and shows me the name, Motion Sickness by Phoebe Bridgers. We laughed so hard.</p>
       </div>
     </article>
+
+    <img class="artbreak" src="birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis: two friends in a room, one at a desk on her phone, the other on the bed">
 
     <article class="moment">
       <div class="who">
