@@ -407,6 +407,26 @@ footer .site {
 
 footer .row .right { margin-left: auto; }
 
+/* one of her playlists, quietly, above the footer line */
+.footer-music {
+  margin-bottom: 26px;
+  max-width: 560px;
+}
+.footer-music .label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.footer-music iframe {
+  display: block;
+  width: 100%;
+  height: 80px;
+  border: 0;
+}
+
 a { color: var(--accent); }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -1303,6 +1323,13 @@ a { color: var(--accent); }
 
 <footer>
   <div class="wrap">
+    <div class="footer-music">
+      <span class="label">A playlist of hers</span>
+      <iframe src="https://open.spotify.com/embed/playlist/3JUeFYMbsi2VemxzCaAImR?utm_source=generator"
+        title="LILITH, a playlist by Mavis" loading="lazy"
+        allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
     <div class="row">
       <span class="site">Mavis Joshi</span>
       <span>2005 &mdash; 2026</span>
