@@ -725,6 +725,7 @@ a { color: var(--accent); }
    MEMORY VIDEO — full-bleed, same treatment as the film.
    ============================================================ */
 .memvid {
+  position: relative;
   margin: clamp(30px, 4vw, 52px) 0;
   background: #100d16;
 }
@@ -733,6 +734,29 @@ a { color: var(--accent); }
   width: 100%;
   height: auto;
 }
+
+/* sound toggle for the silent looping clip */
+.sound-btn {
+  position: absolute;
+  right: clamp(14px, 2vw, 28px);
+  bottom: clamp(14px, 2vw, 28px);
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.85);
+  background: rgba(22,18,31,0.42);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.18s linear, opacity 0.18s linear;
+}
+.sound-btn:hover { background: rgba(22,18,31,0.66); }
+.sound-btn svg { width: 21px; height: 21px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sound-btn .horn { fill: #fff; stroke: none; }
+.sound-btn .icon-on { display: none; }
+.sound-btn.on .icon-on { display: block; }
+.sound-btn.on .icon-off { display: none; }
+.memvid video[controls] ~ .sound-btn { bottom: clamp(52px, 5vw, 68px); }
 
 /* ============================================================
    ARTWORK BREAK — three illustrations at one shared height.
@@ -1065,9 +1089,13 @@ a { color: var(--accent); }
   </div>
 
   <div class="memvid">
-    <video controls preload="metadata" playsinline poster="mavis-video-1-poster.jpg" aria-label="Mavis and her mother at the Qutub Minar">
+    <video id="hugvid" muted loop playsinline preload="metadata" poster="mavis-video-1-poster.jpg" aria-label="Mavis and her mother at the Qutub Minar">
       <source src="mavis-video-1.mp4" type="video/mp4">
     </video>
+    <button class="sound-btn" type="button" aria-label="Turn on sound">
+      <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path class="horn" d="M4 9h3.5L12 5.2v13.6L7.5 15H4z"/><path d="M16.5 9.5l4 5M20.5 9.5l-4 5"/></svg>
+      <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path class="horn" d="M4 9h3.5L12 5.2v13.6L7.5 15H4z"/><path d="M16.2 8.4a5.6 5.6 0 0 1 0 7.2M19.1 6a9.2 9.2 0 0 1 0 12"/></svg>
+    </button>
   </div>
 
   <div class="wrap">
@@ -1365,6 +1393,57 @@ a { color: var(--accent); }
 })();
 </script>
 
+
+<script>
+/* The Qutub clip plays itself, silently, while it is on screen.
+   Muted autoplay is the only kind browsers allow, so the sound
+   button is what turns it on - that click is the gesture. */
+(function () {
+  var v = document.getElementById('hugvid');
+  if (!v) return;
+  var btn = document.querySelector('.memvid .sound-btn');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    v.controls = true;                       /* no self-starting motion; they press play */
+  } else {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }                  /* no soundtrack from a video nobody can see */
+      });
+    }, { threshold: 0.3 }).observe(v);
+  }
+
+  btn.addEventListener('click', function () {
+    v.muted = !v.muted;
+    btn.classList.toggle('on', !v.muted);
+    btn.setAttribute('aria-label', v.muted ? 'Turn on sound' : 'Turn off sound');
+    if (!v.muted) {
+      v.loop = false;                        /* 12 seconds on repeat with sound would grate */
+      v.controls = true;                     /* now they can pause and scrub */
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    } else {
+      v.loop = true;                         /* back to a silent loop */
+    }
+  });
+})();
+</script>
+
+<script>
+/* never two soundtracks at once */
+(function () {
+  var vids = [].slice.call(document.querySelectorAll('video'));
+  vids.forEach(function (v) {
+    v.addEventListener('play', function () {
+      vids.forEach(function (o) { if (o !== v && !o.paused && !o.muted) { o.pause(); } });
+    });
+    v.addEventListener('volumechange', function () {
+      if (!v.muted) { vids.forEach(function (o) { if (o !== v) { o.muted = true; } }); }
+    });
+  });
+})();
+</script>
 
 <script>
 (function () {
