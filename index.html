@@ -630,13 +630,6 @@ a { color: var(--accent); }
 }
 .player.vertical .poster { object-position: center top; }
 
-/* a click-to-load YouTube cell in the reel */
-.ytcell { position: relative; cursor: pointer; }
-.ytcell .poster { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
-.ytcell iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.ytcell:hover .play-btn,
-.ytcell:focus-visible .play-btn { background: rgba(22,18,31,0.66); }
-
 /* ============================================================
    LIGHTBOX
    ============================================================ */
@@ -1141,7 +1134,7 @@ a { color: var(--accent); }
 <!-- ============ PHOTOGRAPHS ============ -->
 <section class="photos">
   <div class="photostrip">
-      <div class="pvid ytcell" id="reelfilm" style="width:349px" role="button" tabindex="0" aria-label="Play What Was I Made For, a film by Mavis"><img class="poster" src="wwimf-poster.jpg" width="720" height="1280" decoding="async" alt="Mavis smiling to camera, a still from What Was I Made For"><span class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="wwimf-poster.jpg" aria-label="What Was I Made For, a film by Mavis"><source src="wwimf.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:229.8px"><img src="photos/p049.jpg" width="230" height="207" loading="lazy" decoding="async" alt=""><img src="photos/p079.jpg" width="230" height="409" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:329.6px"><img src="photos/p027.jpg" width="330" height="330" loading="lazy" decoding="async" alt=""><img src="photos/j030.jpg" width="330" height="286" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:264.3px"><img src="photos/p131.jpg" width="264" height="418" loading="lazy" decoding="async" alt=""><img src="photos/h012.jpg" width="264" height="198" loading="lazy" decoding="async" alt=""></div>
@@ -1345,23 +1338,6 @@ a { color: var(--accent); }
 })();
 </script>
 
-<script>
-(function () {
-  var p = document.getElementById('reelfilm');
-  if (!p) return;
-  function load() {
-    if (p.dataset.loaded) return;
-    p.dataset.loaded = '1';
-    p.innerHTML = '<iframe src="https://www.youtube.com/embed/m9ceAkJ2VLI?autoplay=1&rel=0&modestbranding=1" ' +
-      'title="What Was I Made For, by Mavis Joshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-    p.style.cursor = 'default';
-  }
-  p.addEventListener('click', load);
-  p.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
-  });
-})();
-</script>
 
 <script>
 (function () {
