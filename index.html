@@ -275,15 +275,13 @@ section { padding: clamp(56px, 8vw, 92px) 0; }
 }
 
 @media (max-width: 720px) {
-  .mem-wrap { display: block; position: relative; }
-  .mem-copy { position: relative; z-index: 1; }
-  /* the creature sits behind the words and runs to both edges */
+  .mem-wrap { display: block; }
+  /* the creature tucks into the empty corner under the helplines */
   .mem-art {
-    position: relative;
-    z-index: 0;
-    width: auto;
-    margin: clamp(-410px, -82vw, -240px) calc(var(--gutter) * -1) -30px;
-    opacity: 0.4;
+    width: 50%;
+    max-width: 230px;
+    margin: 6px calc(var(--gutter) * -0.5) -10px auto;
+    opacity: 1;
   }
 }
 
@@ -320,15 +318,13 @@ section { padding: clamp(56px, 8vw, 92px) 0; }
 }
 
 @media (max-width: 720px) {
-  .contrib-wrap { display: block; position: relative; }
-  .contrib-copy { position: relative; z-index: 1; }
-  /* the drawing slides up behind the words and runs to both edges */
+  .contrib-wrap { display: block; }
+  /* she sits beside the button, out to the right edge */
   .contrib-art {
-    position: relative;
-    z-index: 0;
-    width: auto;
-    margin: clamp(-215px, -41vw, -125px) calc(var(--gutter) * -1) -22px;
-    opacity: 0.62;
+    width: 58%;
+    min-width: 190px;
+    margin: -74px calc(var(--gutter) * -1) -18px auto;
+    opacity: 1;
   }
 }
 
@@ -499,6 +495,16 @@ footer .site {
 }
 
 footer .row .right { margin-left: auto; }
+
+@media (max-width: 720px) {
+  footer .row { gap: 10px 16px; }
+  footer .site { margin-right: auto; }          /* name left, years pushed right */
+  footer .row .right {
+    flex: 1 0 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+}
 
 
 a { color: var(--accent); }
