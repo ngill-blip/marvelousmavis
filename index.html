@@ -302,6 +302,16 @@ section { padding: clamp(56px, 8vw, 92px) 0; }
   margin-bottom: -14px;
 }
 
+/* on wide screens she runs out to the right edge, meeting the mural below */
+@media (min-width: 721px) {
+  .contrib-art {
+    width: auto;
+    flex: 0 1 clamp(320px, 42vw, 720px);
+    margin-right: calc(50% - 50vw);
+    margin-bottom: -22px;
+  }
+}
+
 .contrib-art img {
   display: block;
   width: 100%;
