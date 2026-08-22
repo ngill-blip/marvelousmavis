@@ -630,6 +630,13 @@ a { color: var(--accent); }
 }
 .player.vertical .poster { object-position: center top; }
 
+/* a click-to-load YouTube cell in the reel */
+.ytcell { position: relative; cursor: pointer; }
+.ytcell .poster { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+.ytcell iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.ytcell:hover .play-btn,
+.ytcell:focus-visible .play-btn { background: rgba(22,18,31,0.66); }
+
 /* ============================================================
    LIGHTBOX
    ============================================================ */
@@ -1134,6 +1141,7 @@ a { color: var(--accent); }
 <!-- ============ PHOTOGRAPHS ============ -->
 <section class="photos">
   <div class="photostrip">
+      <div class="pvid ytcell" id="reelfilm" style="width:349px" role="button" tabindex="0" aria-label="Play What Was I Made For, a film by Mavis"><img class="poster" src="wwimf-poster.jpg" width="720" height="1280" decoding="async" alt="Mavis smiling to camera, a still from What Was I Made For"><span class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
       <div class="pcol" style="width:229.8px"><img src="photos/p049.jpg" width="230" height="207" loading="lazy" decoding="async" alt=""><img src="photos/p079.jpg" width="230" height="409" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:329.6px"><img src="photos/p027.jpg" width="330" height="330" loading="lazy" decoding="async" alt=""><img src="photos/j030.jpg" width="330" height="286" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:264.3px"><img src="photos/p131.jpg" width="264" height="418" loading="lazy" decoding="async" alt=""><img src="photos/h012.jpg" width="264" height="198" loading="lazy" decoding="async" alt=""></div>
@@ -1300,22 +1308,6 @@ a { color: var(--accent); }
   </div>
 </section>
 
-<!-- ============ WHAT WAS I MADE FOR ============ -->
-<section class="film short">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>WHAT WAS I MADE FOR</h2>
-    </div>
-
-    <div class="player vertical" id="player2" role="button" tabindex="0" aria-label="Play What Was I Made For">
-      <img class="poster" src="wwimf-poster.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Mavis smiling to camera, a still from What Was I Made For">
-      <span class="play-btn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </span>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div class="row">
@@ -1335,6 +1327,7 @@ a { color: var(--accent); }
     p.innerHTML = '<iframe src="https://www.youtube.com/embed/9ugvckt30Co?autoplay=1&rel=0&modestbranding=1" ' +
       'title="SUICIDELAND by Mavis Joshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     p.style.cursor = 'default';
+    if (window.__reelHold) window.__reelHold(1e9);
   }
   p.addEventListener('click', load);
   p.addEventListener('keydown', function (e) {
@@ -1344,8 +1337,17 @@ a { color: var(--accent); }
 </script>
 
 <script>
+/* a video playing in the reel stops the drift, so it can't scroll away */
 (function () {
-  var p = document.getElementById('player2');
+  document.querySelectorAll('.photostrip video').forEach(function (v) {
+    v.addEventListener('play', function () { if (window.__reelHold) window.__reelHold(1e9); });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var p = document.getElementById('reelfilm');
   if (!p) return;
   function load() {
     if (p.dataset.loaded) return;
@@ -1375,7 +1377,7 @@ a { color: var(--accent); }
 (function () {
   var strip = document.querySelector('.photostrip');
   if (!strip) return;
-  var imgs = [].slice.call(strip.querySelectorAll('img'));
+  var imgs = [].slice.call(strip.querySelectorAll('img:not(.poster)'));
   if (!imgs.length) return;
 
   /* ---------- slow automatic drift ---------- */
@@ -1384,6 +1386,7 @@ a { color: var(--accent); }
   var inView = false, holdUntil = 0, last = null;
 
   function hold(ms) { holdUntil = Math.max(holdUntil, performance.now() + ms); }
+  window.__reelHold = hold;
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) { inView = es[0].isIntersecting; },
