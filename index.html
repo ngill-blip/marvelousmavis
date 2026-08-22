@@ -617,6 +617,19 @@ a { color: var(--accent); }
 @media (max-width: 900px) { .photostrip { zoom: 0.62; } }
 @media (max-width: 560px) { .photostrip { zoom: 0.44; } }
 
+/* a video cell inside the reel — same fixed height as every column */
+.pvid { flex: 0 0 auto; height: 620px; background: #100d16; }
+.pvid video { display: block; width: 100%; height: 100%; object-fit: cover; background: #100d16; }
+
+/* a vertical player, for portrait film */
+.player.vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 430px;
+  margin-right: auto;
+  background: #100d16;
+}
+.player.vertical .poster { object-position: center top; }
+
 /* ============================================================
    LIGHTBOX
    ============================================================ */
@@ -1127,6 +1140,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:823.2px"><img src="photos/p119.jpg" width="823" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/k022.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p184.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p090.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="pondicherry-poster.jpg" aria-label="Pondicherry, filmed by Mavis"><source src="pondicherry.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:159.4px"><img src="photos/p066.jpg" width="159" height="283" loading="lazy" decoding="async" alt=""><img src="photos/p145.jpg" width="159" height="169" loading="lazy" decoding="async" alt=""><img src="photos/p062.jpg" width="159" height="160" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:365.9px"><img src="photos/p204.jpg" width="366" height="250" loading="lazy" decoding="async" alt=""><img src="photos/p146.jpg" width="366" height="366" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:221.8px"><img src="photos/p035.jpg" width="222" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p147.jpg" width="222" height="222" loading="lazy" decoding="async" alt=""></div>
@@ -1286,6 +1300,22 @@ a { color: var(--accent); }
   </div>
 </section>
 
+<!-- ============ WHAT WAS I MADE FOR ============ -->
+<section class="film short">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>WHAT WAS I MADE FOR</h2>
+    </div>
+
+    <div class="player vertical" id="player2" role="button" tabindex="0" aria-label="Play What Was I Made For">
+      <img class="poster" src="wwimf-poster.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Mavis smiling to camera, a still from What Was I Made For">
+      <span class="play-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="row">
@@ -1304,6 +1334,24 @@ a { color: var(--accent); }
     p.dataset.loaded = '1';
     p.innerHTML = '<iframe src="https://www.youtube.com/embed/9ugvckt30Co?autoplay=1&rel=0&modestbranding=1" ' +
       'title="SUICIDELAND by Mavis Joshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+    p.style.cursor = 'default';
+  }
+  p.addEventListener('click', load);
+  p.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var p = document.getElementById('player2');
+  if (!p) return;
+  function load() {
+    if (p.dataset.loaded) return;
+    p.dataset.loaded = '1';
+    p.innerHTML = '<iframe src="https://www.youtube.com/embed/m9ceAkJ2VLI?autoplay=1&rel=0&modestbranding=1" ' +
+      'title="What Was I Made For, by Mavis Joshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     p.style.cursor = 'default';
   }
   p.addEventListener('click', load);
