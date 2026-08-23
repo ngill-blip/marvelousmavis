@@ -134,31 +134,26 @@ a { color: var(--accent); }
 }
 
 /* ============================================================
-   THE STRIP — one continuous row, fixed height, nothing cropped
+   THE STRIP — one column, top to bottom, nothing cropped
    ============================================================ */
 .works { padding: clamp(30px, 4vw, 52px) 0 0; }
 
-.photostrip {
+.filmstrip {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   gap: 4px;
-  overflow-x: auto;
-  overflow-y: hidden;
   padding: 0 var(--gutter);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  overscroll-behavior-x: contain;
 }
-.photostrip::-webkit-scrollbar { height: 6px; }
-.photostrip::-webkit-scrollbar-track { background: transparent; }
-.photostrip::-webkit-scrollbar-thumb { background: rgba(22,18,31,0.22); border-radius: 3px; }
-.photostrip:hover::-webkit-scrollbar-thumb { background: rgba(22,18,31,0.4); }
 
-.pcol { display: flex; flex-direction: column; gap: 4px; flex: 0 0 auto; }
-.photostrip img { display: block; width: 100%; height: auto; background: #eeebf0; cursor: zoom-in; }
-
-@media (max-width: 900px) { .photostrip { zoom: 0.62; } }
-@media (max-width: 560px) { .photostrip { zoom: 0.44; } }
+.frame { width: 100%; max-width: 720px; }
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #eeebf0;
+  cursor: zoom-in;
+}
 
 /* ============================================================
    ASK
@@ -410,175 +405,175 @@ footer .row .right { margin-left: auto; }
 </section>
 
 <section class="works">
-  <div class="photostrip" aria-label="Illustrations, drawings, character designs and film backgrounds by Mavis">
-    <div class="pcol" style="width:620px"><img src="a032.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:622px"><img src="a079.jpg" width="622" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:518px"><img src="a045.jpg" width="518" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:775px"><img src="a105.jpg" width="775" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a120.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a155.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a089.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a148.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a069.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a042.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:409px"><img src="a009.jpg" width="409" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a053.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:840px"><img src="a063.jpg" width="840" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a140.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a039.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:674px"><img src="a157.jpg" width="674" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a098.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a113.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a163.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a025.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:990px"><img src="a158.jpg" width="990" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a090.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:495px"><img src="a144.jpg" width="495" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a143.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a018.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:833px"><img src="a164.jpg" width="833" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:642px"><img src="a128.jpg" width="642" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:378px"><img src="a119.jpg" width="378" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a127.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a033.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:551px"><img src="a126.jpg" width="551" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a062.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a133.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:611px"><img src="a040.jpg" width="611" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:349px"><img src="a102.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:3875px"><img src="a083.jpg" width="3875" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a073.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:2204px"><img src="a001.jpg" width="2204" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a048.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a027.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:800px"><img src="a078.jpg" width="800" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a061.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a146.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:551px"><img src="a084.jpg" width="551" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:506px"><img src="a035.jpg" width="506" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:957px"><img src="a121.jpg" width="957" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:468px"><img src="a117.jpg" width="468" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a124.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a097.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:775px"><img src="a136.jpg" width="775" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:540px"><img src="dandelion.jpg" width="540" height="620" loading="lazy" decoding="async" alt="A drawing by Mavis of a small blue creature with a dandelion head"></div>
-    <div class="pcol" style="width:553px"><img src="a149.jpg" width="553" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a095.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a087.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a100.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a066.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a091.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:489px"><img src="a165.jpg" width="489" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:775px"><img src="a030.jpg" width="775" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a017.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a139.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a067.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a085.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a064.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a050.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a086.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a141.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a012.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a156.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a132.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:468px"><img src="a166.jpg" width="468" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a111.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:957px"><img src="a002.jpg" width="957" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a029.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a021.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:413px"><img src="a003.jpg" width="413" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a052.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a055.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:501px"><img src="a008.jpg" width="501" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1122px"><img src="a114.jpg" width="1122" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a059.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a135.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:678px"><img src="a160.jpg" width="678" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a131.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:437px"><img src="a108.jpg" width="437" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a019.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:849px"><img src="a103.jpg" width="849" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a150.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a031.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a065.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a092.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1100px"><img src="a016.jpg" width="1100" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a081.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1481px"><img src="a122.jpg" width="1481" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a020.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:889px"><img src="a161.jpg" width="889" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:633px"><img src="a153.jpg" width="633" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a072.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a060.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a101.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:842px"><img src="a041.jpg" width="842" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a071.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a038.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a049.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a014.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:831px"><img src="a044.jpg" width="831" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a077.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a107.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:653px"><img src="a075.jpg" width="653" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:464px"><img src="a147.jpg" width="464" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a036.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:915px"><img src="a137.jpg" width="915" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:769px"><img src="../my-happy-family.jpg" width="769" height="620" loading="lazy" decoding="async" alt="My Happy Family, a drawing by Mavis"></div>
-    <div class="pcol" style="width:620px"><img src="a056.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a013.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a011.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a145.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="../totoro.jpg" width="496" height="620" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div>
-    <div class="pcol" style="width:1102px"><img src="a026.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a068.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a106.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a088.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:774px"><img src="a151.jpg" width="774" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a159.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:2204px"><img src="a023.jpg" width="2204" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:924px"><img src="a104.jpg" width="924" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a024.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:539px"><img src="a043.jpg" width="539" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:462px"><img src="a116.jpg" width="462" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:588px"><img src="a125.jpg" width="588" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a047.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1132px"><img src="a123.jpg" width="1132" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a152.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:434px"><img src="a082.jpg" width="434" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:415px"><img src="a074.jpg" width="415" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a142.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a094.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a057.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:496px"><img src="a046.jpg" width="496" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:859px"><img src="a096.jpg" width="859" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a010.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a054.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a015.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1024px"><img src="a162.jpg" width="1024" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a112.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1240px"><img src="a134.jpg" width="1240" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:608px"><img src="a006.jpg" width="608" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a109.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1240px"><img src="a129.jpg" width="1240" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:775px"><img src="../birthday-gift-2026.jpg" width="775" height="620" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div>
-    <div class="pcol" style="width:1102px"><img src="a028.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:827px"><img src="a007.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a118.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a058.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:453px"><img src="a004.jpg" width="453" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:857px"><img src="a115.jpg" width="857" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a070.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:620px"><img src="a051.jpg" width="620" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a034.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a093.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:860px"><img src="a138.jpg" width="860" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:433px"><img src="a099.jpg" width="433" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:465px"><img src="a110.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:809px"><img src="a154.jpg" width="809" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:494px"><img src="a080.jpg" width="494" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:448px"><img src="a005.jpg" width="448" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:1102px"><img src="a022.jpg" width="1102" height="620" loading="lazy" decoding="async" alt=""></div>
-    <div class="pcol" style="width:887px"><img src="a076.jpg" width="887" height="620" loading="lazy" decoding="async" alt=""></div>
+  <div class="filmstrip" aria-label="Illustrations, drawings, character designs and film backgrounds by Mavis">
+    <div class="frame"><img src="a032.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a079.jpg" width="1600" height="1596" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a045.jpg" width="1338" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a105.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a120.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a155.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a089.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a148.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a069.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a042.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a009.jpg" width="1055" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a053.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a063.jpg" width="1600" height="1181" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a140.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a039.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a157.jpg" width="1600" height="1472" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a098.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a113.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a163.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a025.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a158.jpg" width="1600" height="1002" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a090.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a144.jpg" width="1278" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a143.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a018.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a164.jpg" width="1600" height="1191" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a128.jpg" width="1600" height="1544" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a119.jpg" width="975" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a127.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a033.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a126.jpg" width="1421" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a062.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a133.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a040.jpg" width="1577" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a102.jpg" width="900" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a083.jpg" width="1600" height="256" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a073.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a001.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a048.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a027.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a078.jpg" width="1600" height="1240" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a061.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a146.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a084.jpg" width="1422" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a035.jpg" width="1305" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a121.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a117.jpg" width="1208" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a124.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a097.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a136.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="dandelion.jpg" width="958" height="1100" loading="lazy" decoding="async" alt="A drawing by Mavis of a small blue creature with a dandelion head"></div>
+    <div class="frame"><img src="a149.jpg" width="1426" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a095.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a087.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a100.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a066.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a091.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a165.jpg" width="1262" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a030.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a017.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a139.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a067.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a085.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a064.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a050.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a086.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a141.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a012.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a156.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a132.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a166.jpg" width="1209" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a111.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a002.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a029.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a021.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a003.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a052.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a055.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a008.jpg" width="1293" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a114.jpg" width="1600" height="884" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a059.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a135.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a160.jpg" width="1600" height="1464" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a131.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a108.jpg" width="1128" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a019.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a103.jpg" width="1600" height="1168" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a150.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a031.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a065.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a092.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a016.jpg" width="1600" height="902" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a081.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a122.jpg" width="1600" height="670" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a020.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a161.jpg" width="1600" height="1116" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a153.jpg" width="1600" height="1568" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a072.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a060.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a101.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a041.jpg" width="1600" height="1178" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a071.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a038.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a049.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a014.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a044.jpg" width="1600" height="1194" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a077.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a107.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a075.jpg" width="1600" height="1520" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a147.jpg" width="1198" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a036.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a137.jpg" width="1600" height="1084" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="../my-happy-family.jpg" width="1280" height="1032" loading="lazy" decoding="async" alt="My Happy Family, a drawing by Mavis"></div>
+    <div class="frame"><img src="a056.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a013.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a011.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a145.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="../totoro.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div>
+    <div class="frame"><img src="a026.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a068.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a106.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a088.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a151.jpg" width="1600" height="1282" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a159.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a023.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a104.jpg" width="1600" height="1074" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a024.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a043.jpg" width="1392" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a116.jpg" width="1192" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a125.jpg" width="1518" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a047.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a123.jpg" width="1600" height="876" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a152.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a082.jpg" width="1120" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a074.jpg" width="1070" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a142.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a094.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a057.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a046.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a096.jpg" width="1600" height="1155" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a010.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a054.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a015.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a162.jpg" width="1600" height="969" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a112.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a134.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a006.jpg" width="1569" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a109.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a129.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="../birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div>
+    <div class="frame"><img src="a028.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a007.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a118.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a058.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a004.jpg" width="1170" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a115.jpg" width="1600" height="1157" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a070.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a051.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a034.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a093.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a138.jpg" width="1600" height="1153" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a099.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a110.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a154.jpg" width="1600" height="1226" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a080.jpg" width="1275" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a005.jpg" width="1155" height="1600" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a022.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
+    <div class="frame"><img src="a076.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
   </div>
 </section>
 
@@ -606,63 +601,15 @@ footer .row .right { margin-left: auto; }
 </footer>
 
 <script>
-/* One long strip of her work: a slow drift while it is on screen,
-   click any piece to see it whole. Same behaviour as the photo reel
-   on the memorial page. */
+/* Her work, top to bottom. Click any piece to see it whole. */
 (function () {
-  var strip = document.querySelector('.photostrip');
+  var strip = document.querySelector('.filmstrip');
   if (!strip) return;
   var imgs = [].slice.call(strip.querySelectorAll('img'));
   if (!imgs.length) return;
 
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var SPEED = 11;                 /* px per second, deliberately barely there */
-  var inView = false, holdUntil = 0, last = null;
-
+  var holdUntil = 0;
   function hold(ms) { holdUntil = Math.max(holdUntil, performance.now() + ms); }
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { inView = es[0].isIntersecting; },
-      { threshold: 0.12 }).observe(strip);
-  }
-  ['pointerdown', 'wheel', 'touchstart', 'mouseenter'].forEach(function (ev) {
-    strip.addEventListener(ev, function () { hold(2600); }, { passive: true });
-  });
-  strip.addEventListener('mouseleave', function () { hold(700); }, { passive: true });
-
-  /* scrollLeft snaps to whole pixels, so keep the real position as a float
-     and ease it toward a target - drift and manual scrolling both stay soft. */
-  var pos = strip.scrollLeft, target = pos;
-  var EASE = 0.11;
-
-  function maxScroll() { return strip.scrollWidth - strip.clientWidth; }
-
-  strip.addEventListener('wheel', function (e) {
-    var dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX
-           : (e.shiftKey ? e.deltaY : 0);
-    if (!dx) return;
-    e.preventDefault();
-    target = Math.max(0, Math.min(maxScroll(), target + dx * 1.15));
-    hold(2600);
-  }, { passive: false });
-
-  strip.addEventListener('scroll', function () {
-    if (Math.abs(strip.scrollLeft - pos) > 2) { pos = target = strip.scrollLeft; }
-  }, { passive: true });
-
-  function tick(t) {
-    if (last === null) last = t;
-    var dt = (t - last) / 1000; last = t;
-    if (dt < 0.4 && !document.hidden) {
-      if (!reduce && inView && t > holdUntil && target < maxScroll() - 1) {
-        target += SPEED * dt;
-      }
-      var d = target - pos;
-      if (Math.abs(d) > 0.05) { pos += d * EASE; strip.scrollLeft = pos; }
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 
   /* ---------- lightbox ---------- */
   var box = null, idx = -1, lbImg = null, lbCount = null, lastFocus = null;
