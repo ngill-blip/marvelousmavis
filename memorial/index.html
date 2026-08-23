@@ -84,6 +84,34 @@ h2.title .amp{ color:var(--purple-2); }
 .hero-sub{ margin-top:1.5rem; color:var(--dim); font-size:clamp(.9rem,1.5vw,1.05rem); letter-spacing:.03em; }
 .hero-art{ width:100%; height:auto; display:block; }
 
+/* ---------- full-bleed slides (2 and 3) ---------- */
+.slide > .bg{
+  position:absolute; inset:0; z-index:-2;
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+.s-bleed .pad{ justify-content:flex-end; padding-bottom:clamp(44px,7vh,84px); }
+.s-bleed > .veil{
+  position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(to top,
+    rgba(251,250,249,.97) 0%,
+    rgba(251,250,249,.86) 13%,
+    rgba(251,250,249,.34) 27%,
+    rgba(251,250,249,0) 42%);
+}
+.s-bleed h2.title{ text-shadow:0 1px 22px rgba(251,250,249,.85); }
+
+/* ---------- painted grounds from SUICIDELAND (4,5,6,7,9) ---------- */
+.s-paint > .veil{
+  position:absolute; inset:0; z-index:-1;
+  background:rgba(251,250,249,.40);
+}
+.s-paint h2.title{ text-shadow:0 1px 20px rgba(251,250,249,.92); }
+/* a white print mat, drawn with box-shadow so it costs no layout space */
+.s-paint .fit-row img{
+  box-shadow:0 0 0 clamp(6px,.65vw,11px) var(--paper),
+             0 20px 46px rgba(75,46,143,.22);
+}
+
 /* ---------- photo slides ---------- */
 .fit-row{
   flex:1 1 auto; min-height:0; display:flex; align-items:center;
@@ -225,27 +253,27 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 2 -->
-  <section class="slide s-fit">
+  <section class="slide s-bleed">
+    <div class="bg" style="background-image:url('s2-abode.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Mavis’s abode and friends</h2>
-      <div class="fit-row">
-        <img src="s2-abode.webp" alt="Mavis in her room under fairy lights">
-      </div>
     </div>
   </section>
 
   <!-- 3 -->
-  <section class="slide s-fit">
+  <section class="slide s-bleed">
+    <div class="bg" style="background-image:url('s3-cuties-room.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Jiggy <span class="amp">&amp;</span> Mavis</h2>
-      <div class="fit-row">
-        <img src="s3-cuties-room.webp" alt="Cutie’s Room, drawn by Mavis">
-      </div>
     </div>
   </section>
 
   <!-- 4 -->
-  <section class="slide s-fit" data-track="exist-for-love,dawning-of-spring">
+  <section class="slide s-fit s-paint" data-track="exist-for-love,dawning-of-spring">
+    <div class="bg" style="background-image:url('bg4.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Pari’s Mavis</h2>
       <div class="fit-row two">
@@ -256,7 +284,9 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 5 -->
-  <section class="slide s-fit">
+  <section class="slide s-fit s-paint">
+    <div class="bg" style="background-image:url('bg5.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Nehal’s Mavis</h2>
       <div class="fit-row two">
@@ -267,7 +297,9 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 6 -->
-  <section class="slide s-fit single">
+  <section class="slide s-fit single s-paint">
+    <div class="bg" style="background-image:url('bg6.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <div class="fit-copy">
         <h2 class="title">Sameer’s Mavis</h2>
@@ -279,7 +311,9 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 7 -->
-  <section class="slide s-fit">
+  <section class="slide s-fit s-paint">
+    <div class="bg" style="background-image:url('bg7.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Manasvi’s Mavis</h2>
       <div class="fit-row">
@@ -314,7 +348,9 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 9 -->
-  <section class="slide s-fit">
+  <section class="slide s-fit s-paint">
+    <div class="bg" style="background-image:url('bg9.webp')"></div>
+    <div class="veil"></div>
     <div class="pad">
       <h2 class="title">Ananya <span class="amp">&amp;</span> Mavi</h2>
       <div class="fit-row">
