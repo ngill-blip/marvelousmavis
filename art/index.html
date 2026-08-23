@@ -134,25 +134,37 @@ a { color: var(--accent); }
 }
 
 /* ============================================================
-   THE STRIP — one column, top to bottom, nothing cropped
+   HER WORK — a justified contact sheet, full-bleed, nothing cropped.
+   flex-grow is each piece's aspect ratio, so every item in a row comes
+   out the same height and the row fills the width exactly. Row heights
+   are varied deliberately (190-550px) so some pieces come out big and
+   some small, and the order runs by colour so like sits beside like.
+   Nothing scrolls sideways.
    ============================================================ */
 .works { padding: clamp(30px, 4vw, 52px) 0 0; }
 
-.filmstrip {
+.arow {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 4px;
-  padding: 0 var(--gutter);
+  margin-bottom: 4px;
 }
+.arow:last-child { margin-bottom: 0; }
 
-.frame { width: 100%; max-width: 720px; }
-.frame img {
+.acell { flex-basis: 0; min-width: 0; }
+.acell img {
   display: block;
   width: 100%;
   height: auto;
   background: #eeebf0;
   cursor: zoom-in;
+}
+
+/* narrow screens: two columns, mixed sizes, still nothing to scroll sideways */
+@media (max-width: 760px) {
+  .artgrid { columns: 2; column-gap: 4px; }
+  .arow { display: contents; }
+  .acell { break-inside: avoid; margin: 0 0 4px; }
 }
 
 /* ============================================================
@@ -405,175 +417,51 @@ footer .row .right { margin-left: auto; }
 </section>
 
 <section class="works">
-  <div class="filmstrip" aria-label="Illustrations, drawings, character designs and film backgrounds by Mavis">
-    <div class="frame"><img src="a032.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a079.jpg" width="1600" height="1596" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a045.jpg" width="1338" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a105.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a120.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a155.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a089.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a148.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a069.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a042.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a009.jpg" width="1055" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a053.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a063.jpg" width="1600" height="1181" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a140.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a039.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a157.jpg" width="1600" height="1472" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a098.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a113.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a163.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a025.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a158.jpg" width="1600" height="1002" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a090.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a144.jpg" width="1278" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a143.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a018.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a164.jpg" width="1600" height="1191" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a128.jpg" width="1600" height="1544" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a119.jpg" width="975" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a127.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a033.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a126.jpg" width="1421" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a062.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a133.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a040.jpg" width="1577" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a102.jpg" width="900" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a083.jpg" width="1600" height="256" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a073.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a001.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a048.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a027.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a078.jpg" width="1600" height="1240" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a061.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a146.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a084.jpg" width="1422" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a035.jpg" width="1305" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a121.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a117.jpg" width="1208" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a124.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a097.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a136.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="dandelion.jpg" width="958" height="1100" loading="lazy" decoding="async" alt="A drawing by Mavis of a small blue creature with a dandelion head"></div>
-    <div class="frame"><img src="a149.jpg" width="1426" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a095.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a087.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a100.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a066.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a091.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a165.jpg" width="1262" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a030.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a017.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a139.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a067.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a085.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a064.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a050.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a086.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a141.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a012.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a156.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a132.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a166.jpg" width="1209" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a111.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a002.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a029.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a021.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a003.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a052.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a055.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a008.jpg" width="1293" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a114.jpg" width="1600" height="884" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a059.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a135.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a160.jpg" width="1600" height="1464" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a131.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a108.jpg" width="1128" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a019.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a103.jpg" width="1600" height="1168" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a150.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a031.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a065.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a092.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a016.jpg" width="1600" height="902" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a081.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a122.jpg" width="1600" height="670" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a020.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a161.jpg" width="1600" height="1116" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a153.jpg" width="1600" height="1568" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a072.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a060.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a101.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a041.jpg" width="1600" height="1178" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a071.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a038.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a049.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a014.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a044.jpg" width="1600" height="1194" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a077.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a107.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a075.jpg" width="1600" height="1520" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a147.jpg" width="1198" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a036.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a137.jpg" width="1600" height="1084" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="../my-happy-family.jpg" width="1280" height="1032" loading="lazy" decoding="async" alt="My Happy Family, a drawing by Mavis"></div>
-    <div class="frame"><img src="a056.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a013.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a011.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a145.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="../totoro.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div>
-    <div class="frame"><img src="a026.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a068.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a106.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a088.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a151.jpg" width="1600" height="1282" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a159.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a023.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a104.jpg" width="1600" height="1074" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a024.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a043.jpg" width="1392" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a116.jpg" width="1192" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a125.jpg" width="1518" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a047.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a123.jpg" width="1600" height="876" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a152.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a082.jpg" width="1120" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a074.jpg" width="1070" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a142.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a094.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a057.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a046.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a096.jpg" width="1600" height="1155" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a010.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a054.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a015.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a162.jpg" width="1600" height="969" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a112.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a134.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a006.jpg" width="1569" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a109.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a129.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="../birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div>
-    <div class="frame"><img src="a028.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a007.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a118.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a058.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a004.jpg" width="1170" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a115.jpg" width="1600" height="1157" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a070.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a051.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a034.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a093.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a138.jpg" width="1600" height="1153" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a099.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a110.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a154.jpg" width="1600" height="1226" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a080.jpg" width="1275" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a005.jpg" width="1155" height="1600" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a022.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div>
-    <div class="frame"><img src="a076.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
+  <div class="artgrid" aria-label="Illustrations, drawings, character designs and film backgrounds by Mavis">
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a095.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a026.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:3.5556"><img src="a001.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:2.3881"><img src="a122.jpg" width="1600" height="670" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:6.2500"><img src="a083.jpg" width="1600" height="256" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3051"><img src="a154.jpg" width="1600" height="1226" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.2480"><img src="a151.jpg" width="1600" height="1282" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8709"><img src="dandelion.jpg" width="958" height="1100" loading="lazy" decoding="async" alt="A drawing by Mavis of a small blue creature with a dandelion head"></div><div class="acell" style="flex:1.7778"><img src="a011.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a135.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8081"><img src="a008.jpg" width="1293" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a145.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a010.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a012.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a022.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6594"><img src="a009.jpg" width="1055" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a150.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a086.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a013.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a036.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a112.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a020.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.6512"><img src="a162.jpg" width="1600" height="969" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0526"><img src="a075.jpg" width="1600" height="1520" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4760"><img src="a137.jpg" width="1600" height="1084" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8000"><img src="a139.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a146.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a017.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a018.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8000"><img src="a142.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a133.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a069.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.0000"><img src="a032.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3400"><img src="a044.jpg" width="1600" height="1194" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7556"><img src="a166.jpg" width="1209" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:3.5556"><img src="a023.jpg" width="1600" height="450" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a015.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a050.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.2403"><img src="../my-happy-family.jpg" width="1280" height="1032" loading="lazy" decoding="async" alt="My Happy Family, a drawing by Mavis"></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a028.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a025.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.6987"><img src="a163.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a067.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a049.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:2.0000"><img src="a134.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a093.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a014.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8156"><img src="a035.jpg" width="1305" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.5625"><img src="a102.jpg" width="900" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a085.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.3877"><img src="a138.jpg" width="1600" height="1153" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7488"><img src="a147.jpg" width="1198" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a141.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.6987"><img src="a034.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8363"><img src="a045.jpg" width="1338" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a031.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a051.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a019.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.0000"><img src="a056.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a124.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a155.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7987"><img src="a144.jpg" width="1278" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.9856"><img src="a040.jpg" width="1577" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7219"><img src="a005.jpg" width="1155" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a039.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7550"><img src="a117.jpg" width="1208" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a021.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0363"><img src="a128.jpg" width="1600" height="1544" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0870"><img src="a157.jpg" width="1600" height="1472" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.7887"><img src="a165.jpg" width="1262" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7738"><img src="a016.jpg" width="1600" height="902" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a132.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8000"><img src="a131.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a113.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7050"><img src="a108.jpg" width="1128" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a088.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a027.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6094"><img src="a119.jpg" width="975" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a156.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8888"><img src="a084.jpg" width="1422" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a024.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6669"><img src="a003.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a033.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a159.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7500"><img src="a110.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8912"><img src="a149.jpg" width="1426" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a091.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:2.0000"><img src="a129.jpg" width="1600" height="800" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.5429"><img src="a121.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a092.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.6987"><img src="a081.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.2500"><img src="a030.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a038.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a059.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a073.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a148.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.2500"><img src="../birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div></div>
+    <div class="arow"><div class="acell" style="flex:0.7000"><img src="a082.jpg" width="1120" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a046.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a060.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a118.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.8100"><img src="a114.jpg" width="1600" height="884" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a101.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7312"><img src="a004.jpg" width="1170" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.5968"><img src="a158.jpg" width="1600" height="1002" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.3582"><img src="a041.jpg" width="1600" height="1178" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a066.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.9806"><img src="a006.jpg" width="1569" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.7450"><img src="a116.jpg" width="1192" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a072.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.6687"><img src="a074.jpg" width="1070" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4337"><img src="a161.jpg" width="1600" height="1116" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a065.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a070.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a047.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3434"><img src="a164.jpg" width="1600" height="1191" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a109.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a089.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8700"><img src="a043.jpg" width="1392" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0929"><img src="a160.jpg" width="1600" height="1464" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.2500"><img src="a105.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a068.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a058.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a107.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3853"><img src="a096.jpg" width="1600" height="1155" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a100.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.0000"><img src="a152.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a087.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.7778"><img src="a090.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a054.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a106.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0204"><img src="a153.jpg" width="1600" height="1568" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0025"><img src="a079.jpg" width="1600" height="1596" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.9487"><img src="a125.jpg" width="1518" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a120.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="../totoro.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div><div class="acell" style="flex:0.6987"><img src="a077.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.7778"><img src="a029.jpg" width="1600" height="900" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.2903"><img src="a078.jpg" width="1600" height="1240" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.2500"><img src="a136.jpg" width="1600" height="1280" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8000"><img src="a143.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.6987"><img src="a099.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a042.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3829"><img src="a115.jpg" width="1600" height="1157" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.5429"><img src="a002.jpg" width="1600" height="1037" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3333"><img src="a007.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8000"><img src="a140.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3548"><img src="a063.jpg" width="1600" height="1181" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.8265"><img src="a123.jpg" width="1600" height="876" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a048.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a098.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a055.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a052.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a076.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4898"><img src="a104.jpg" width="1600" height="1074" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a062.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:1.4311"><img src="a071.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.8881"><img src="a126.jpg" width="1421" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a053.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.7969"><img src="a080.jpg" width="1275" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a064.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a057.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.3699"><img src="a103.jpg" width="1600" height="1168" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.4311"><img src="a061.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div></div>
+    <div class="arow"><div class="acell" style="flex:0.8000"><img src="a111.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a097.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:0.6987"><img src="a094.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div><div class="acell" style="flex:1.0000"><img src="a127.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div></div>
   </div>
 </section>
 
@@ -601,9 +489,9 @@ footer .row .right { margin-left: auto; }
 </footer>
 
 <script>
-/* Her work, top to bottom. Click any piece to see it whole. */
+/* Her work, grouped by colour. Click any piece to see it whole. */
 (function () {
-  var strip = document.querySelector('.filmstrip');
+  var strip = document.querySelector('.artgrid');
   if (!strip) return;
   var imgs = [].slice.call(strip.querySelectorAll('img'));
   if (!imgs.length) return;
