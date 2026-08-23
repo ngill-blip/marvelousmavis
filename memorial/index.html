@@ -1,1 +1,537 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mavis Joshi — Memorial</title>
+<meta name="description" content="A memorial for Mavis Joshi, 2005 to 2026. Shine like a star that you are.">
+<link rel="canonical" href="https://marvelousmavis.com/memorial/">
+<meta name="theme-color" content="#0d0a16">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marvelous Mavis">
+<meta property="og:url" content="https://marvelousmavis.com/memorial/">
+<meta property="og:title" content="Mavis Joshi — Memorial">
+<meta property="og:description" content="Shine like a star that you are.">
+<meta property="og:image" content="https://marvelousmavis.com/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+i, em, cite, blockquote { font-style: normal; }
+
+:root{
+  --night:#0d0a16;
+  --night-2:#151024;
+  --paper:#fbfaf9;
+  --dim:#b7b1c4;
+  --dim-2:#8b8598;
+  --accent:#b9a4f0;
+  --rule:rgba(251,250,249,.22);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--night); color:var(--paper);
+  font-family:var(--sans); -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---------- the deck ---------- */
+#deck{
+  height:100vh; height:100dvh; overflow-y:scroll; overflow-x:hidden;
+  scroll-snap-type:y mandatory; scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+#deck::-webkit-scrollbar{ display:none; }
+
+.slide{
+  position:relative; scroll-snap-align:start; scroll-snap-stop:always;
+  height:100vh; height:100dvh; width:100%;
+  overflow:hidden; display:flex; isolation:isolate;
+}
+.slide > .bg{
+  position:absolute; inset:0; z-index:-2;
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+.slide > .scrim{
+  position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(to top, rgba(6,4,12,.90) 0%, rgba(6,4,12,.55) 34%, rgba(6,4,12,.18) 62%, rgba(6,4,12,.42) 100%);
+}
+.pad{
+  width:100%; max-width:1440px; margin:0 auto;
+  padding:clamp(28px,6vh,72px) clamp(24px,5vw,90px);
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-family:var(--sans); font-size:.7rem; letter-spacing:.20em;
+  text-transform:uppercase; color:var(--dim-2); margin-bottom:.85rem;
+}
+h2.title{
+  font-family:var(--serif); font-weight:300; line-height:1.02;
+  font-size:clamp(2.4rem,6.2vw,5.4rem); letter-spacing:-.015em;
+  text-shadow:0 2px 30px rgba(6,4,12,.65);
+}
+h2.title .amp{ color:var(--accent); font-weight:300; }
+.rule{ height:1px; background:var(--rule); margin:1.6rem 0 0; max-width:340px; }
+
+/* ---------- 1. hero ---------- */
+.s-hero{ background:radial-gradient(120% 90% at 70% 12%, #1c1533 0%, #0d0a16 60%, #07050e 100%); }
+.s-hero .pad{ justify-content:center; }
+.hero-grid{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(20px,4vw,64px);
+  align-items:center; width:100%;
+}
+.hero-grid h1{
+  font-family:var(--serif); font-weight:300; letter-spacing:-.02em;
+  font-size:clamp(2.6rem,6.6vw,6rem); line-height:1;
+}
+.hero-grid h1 .star{ color:var(--accent); }
+.hero-sub{ margin-top:1.4rem; color:var(--dim); font-size:clamp(.9rem,1.5vw,1.05rem); letter-spacing:.02em; }
+.hero-art{
+  width:100%; height:auto; display:block;
+  filter:drop-shadow(0 24px 60px rgba(0,0,0,.45));
+}
+
+/* ---------- fitted slides: whole photos, nothing cropped ---------- */
+.bg.blur{ filter:blur(46px) saturate(.75) brightness(.34); transform:scale(1.16); }
+.s-fit .pad{
+  justify-content:flex-start; gap:clamp(12px,2.4vh,26px);
+  max-width:1760px; padding:clamp(22px,4.4vh,52px) clamp(22px,3.4vw,60px);
+}
+.s-fit.single .pad{
+  flex-direction:row; align-items:center; justify-content:flex-start;
+  gap:clamp(24px,4.5vw,72px);
+}
+.s-fit.single .fit-copy{ flex:0 0 auto; max-width:40%; }
+.s-fit.single .fit-row{ flex:1 1 auto; justify-content:flex-end; height:100%; }
+.fit-row{
+  flex:1 1 auto; min-height:0; display:flex; align-items:center;
+  justify-content:center; gap:clamp(14px,2.4vw,34px);
+}
+.s-fit:not(.single) h2.title{ font-size:clamp(2.1rem,4.6vw,3.9rem); }
+.fit-row img{
+  max-height:100%; max-width:100%; width:auto; height:auto;
+  object-fit:contain; display:block;
+  box-shadow:0 22px 70px rgba(0,0,0,.55);
+}
+.fit-row.two img{ max-width:calc(50% - clamp(7px,1.2vw,17px)); }
+@media (max-width:860px){
+  .s-fit.single .pad{ flex-direction:column; align-items:stretch; justify-content:flex-start; }
+  .s-fit.single .fit-copy{ max-width:100%; }
+  .s-fit.single .fit-row{ justify-content:flex-start; }
+}
+@media (max-width:760px){
+  .fit-row{ flex-direction:column; }
+  .fit-row.two img{ max-width:100%; max-height:calc(50% - 8px); }
+}
+
+/* ---------- 8. poem ---------- */
+.s-poem{ background:linear-gradient(180deg,#0b0813 0%,#120e20 55%,#0b0813 100%); }
+.s-poem .pad{ justify-content:center; padding-top:clamp(48px,7vh,80px); }
+.poem-head{ display:flex; align-items:baseline; gap:1.1rem; margin-bottom:clamp(14px,3vh,34px); }
+.poem-head h2{
+  font-family:var(--serif); font-weight:300; letter-spacing:-.01em;
+  font-size:clamp(1.9rem,4vw,3.2rem);
+}
+.poem-head span{ font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--dim-2); }
+.poem{
+  column-count:3; column-gap:clamp(24px,4vw,68px); column-fill:balance;
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(.84rem,1.13vw,1.06rem); line-height:1.66; color:#e9e6f0;
+}
+.poem p{ break-inside:avoid; margin:0 0 1.05em; }
+.poem p:last-child{ margin-bottom:0; }
+@media (max-width:1000px){ .poem{ column-count:2; } }
+@media (max-width:640px){ .poem{ column-count:1; font-size:.9rem; } .s-poem{ height:auto; min-height:100dvh; } .s-poem .pad{ padding-top:64px; padding-bottom:64px; } }
+
+canvas.stars{ position:absolute; inset:0; z-index:-1; width:100%; height:100%; }
+
+/* ---------- chrome ---------- */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:40;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px clamp(18px,4vw,40px);
+  font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2);
+  background:linear-gradient(to bottom, rgba(6,4,12,.6), rgba(6,4,12,0));
+  transition:opacity .3s ease;
+}
+.topbar a{ color:var(--dim); text-decoration:none; }
+.topbar a:hover{ color:var(--paper); }
+
+.hint{
+  position:fixed; bottom:22px; left:50%; transform:translateX(-50%); z-index:40;
+  font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim-2);
+  border:1px solid var(--rule); padding:8px 14px; background:rgba(6,4,12,.5);
+  transition:opacity .5s ease;
+}
+.hint kbd{ font-family:var(--sans); color:var(--paper); border:1px solid var(--rule); padding:1px 5px; margin:0 2px; }
+.hint.gone{ opacity:0; pointer-events:none; }
+
+.sound-btn{
+  position:fixed; bottom:22px; right:22px; z-index:45;
+  width:46px; height:46px; display:grid; place-items:center;
+  border:1px solid rgba(251,250,249,.55); background:rgba(6,4,12,.55);
+  color:var(--paper); cursor:pointer; padding:0;
+}
+.sound-btn:hover{ background:rgba(6,4,12,.8); }
+.sound-btn svg{ width:20px; height:20px; fill:currentColor; }
+.sound-btn .icon-on{ display:none; }
+.sound-btn.on .icon-on{ display:block; }
+.sound-btn.on .icon-off{ display:none; }
+
+.counter{
+  position:fixed; bottom:24px; left:24px; z-index:40;
+  font-size:.72rem; letter-spacing:.16em; color:var(--dim-2); opacity:0;
+  transition:opacity .3s ease; font-variant-numeric:tabular-nums;
+}
+.progress{
+  position:fixed; top:0; left:0; height:2px; z-index:50;
+  background:var(--accent); width:0; transition:width .35s ease; opacity:0;
+}
+
+body.present .topbar{ opacity:0; pointer-events:none; }
+body.present .counter, body.present .progress{ opacity:1; }
+body.present .hint{ opacity:0; pointer-events:none; }
+
+#yt{ position:fixed; width:1px; height:1px; left:-9999px; top:0; opacity:0; pointer-events:none; }
+
+@media (prefers-reduced-motion: reduce){
+  html, #deck{ scroll-behavior:auto; }
+}
+@media (max-width:760px){
+  .hero-grid{ grid-template-columns:1fr; gap:18px; }
+  .hero-art{ max-width:78%; margin:0 auto; }
+  .pair{ grid-template-columns:1fr; grid-template-rows:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="topbar">
+  <span><a href="/">Mavis Joshi</a> &nbsp;·&nbsp; 2005 — 2026</span>
+  <span>Memorial</span>
+</div>
+
+<div id="deck">
+
+  <!-- 1 -->
+  <section class="slide s-hero">
+    <canvas class="stars" data-density="0.55"></canvas>
+    <div class="pad">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">In loving memory</p>
+          <h1>Shine like a <span class="star">star</span> that you are<span class="star">!</span></h1>
+          <p class="hero-sub">Mavis Joshi &nbsp;·&nbsp; 2005 — 2026</p>
+        </div>
+        <img class="hero-art" src="s1-mavis.webp" alt="A drawing of Mavis laughing at a desk" width="1500" height="1372">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="bg" style="background-image:url('s2-abode.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <p class="eyebrow">Where she was happiest</p>
+      <h2 class="title">Mavis’s abode<br>and friends</h2>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="bg" style="background-image:url('s3-cuties-room.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <p class="eyebrow">Cutie’s Room — drawn by Mavis</p>
+      <h2 class="title">Jiggy <span class="amp">&amp;</span> Mavis</h2>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide s-fit">
+    <div class="bg blur" style="background-image:url('s4b-pari.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <h2 class="title">Pari’s Mavis</h2>
+      <div class="fit-row two">
+        <img src="s4a-pari.webp" alt="Pari and Mavis making a heart with their arms">
+        <img src="s4b-pari.webp" alt="Pari and Mavis dancing on the lawn">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide s-fit">
+    <div class="bg blur" style="background-image:url('s5a-nehal.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <h2 class="title">Nehal’s Mavis</h2>
+      <div class="fit-row two">
+        <img src="s5a-nehal.webp" alt="Mavis and friends at the escape room">
+        <img src="s5b-nehal.webp" alt="Nehal and Mavis, heads together">
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide s-fit single">
+    <div class="bg blur" style="background-image:url('s6-sameer.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <div class="fit-copy">
+        <h2 class="title">Sameer’s Mavis</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="fit-row">
+        <img src="s6-sameer.webp" alt="Mavis and Sameer at the pride march">
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="bg" style="background-image:url('s7-manasvi.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <h2 class="title">Manasvi’s Mavis</h2>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide s-poem">
+    <canvas class="stars" data-density="1"></canvas>
+    <div class="pad">
+      <div class="poem-head">
+        <h2>The Sky</h2>
+        <span>A poem</span>
+      </div>
+      <div class="poem">
+        <p>The sky, it is so high up,<br>And I can’t reach it at all.<br>I can’t think, I’m stuck.<br>Every time I fall.</p>
+        <p>I look at the stars,<br>And I see my dreams.<br>The things I want,<br>The things unseen.</p>
+        <p>What’s the point,<br>of the sky so high?<br>If I can’t even see it<br>With my own eyes?</p>
+        <p>What is the point<br>Of anything if<br>the world ends one day?<br>But knowing me,<br>And my thoughts,<br>Who am I to say?</p>
+        <p>Even if, our lives didn’t matter,<br>We’re here right now.<br>Despite the logic and the long run,<br>We’re here right now.</p>
+        <p>The sky so high,<br>And I can’t reach it,<br>Life’s big mystery,<br>And I can’t teach it.</p>
+        <p>The sky is so unbelievably high,<br>But I don’t need to go there yet.<br>Because I have all I need to live;<br>All of the people that I’ve met.</p>
+        <p>Each of them helps me,<br>Good or bad.<br>They make me stronger,<br>And make me glad.</p>
+        <p>All the smiles I’ve shared<br>On this familiar ground.<br>All the sadness,<br>And it’s echoing sound.</p>
+        <p>If I can’t find my pillar,<br>I’ll be one instead.<br>I’ll be the stone<br>On which I rest my head.</p>
+        <p>So treasure my chances,<br>All the moments I’ve had.<br>That the world gave them to me,<br>Even if it made me mad</p>
+        <p>The sky so high,<br>I like it from here.<br>Someday when I’ll fly,<br>Up there I’ll appear.</p>
+        <p>At last all I can say,<br>At the end of the day.<br>No matter how I deprived,<br>I lived; I was alive</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="bg" style="background-image:url('s9-ananya.webp')"></div>
+    <div class="scrim"></div>
+    <div class="pad">
+      <h2 class="title">Ananya <span class="amp">&amp;</span> Mavi</h2>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">1 / 9</div>
+
+<div class="hint" id="hint">Press <kbd>P</kbd> to present &nbsp;·&nbsp; <kbd>→</kbd> next slide</div>
+
+<button class="sound-btn" id="soundBtn" aria-label="Turn on sound" title="Sound">
+  <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" opacity=".45"/><path d="M19.7 5.3 5.3 19.7l-1.4-1.4L18.3 3.9z"/></svg>
+  <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 2.2v2.1c3 .8 5 3.4 5 6.7s-2 5.9-5 6.7v2.1c4.1-.9 7-4.4 7-8.8s-2.9-7.9-7-8.8z"/></svg>
+</button>
+
+<div id="yt"></div>
+
+<script>
+(function(){
+  var deck = document.getElementById('deck');
+  var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var hint = document.getElementById('hint');
+  var idx = 0;
+
+  /* ---------- which slide are we on ---------- */
+  function sync(){
+    var i = Math.round(deck.scrollTop / deck.clientHeight);
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    idx = i;
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  deck.addEventListener('scroll', function(){
+    clearTimeout(deck.__t); deck.__t = setTimeout(sync, 60);
+  }, {passive:true});
+  sync();
+
+  function go(n){
+    var t = Math.max(0, Math.min(slides.length - 1, n));
+    slides[t].scrollIntoView({behavior:'smooth', block:'start'});
+    idx = t; setTimeout(sync, 400);
+  }
+
+  /* ---------- present mode ---------- */
+  function present(on){
+    document.body.classList.toggle('present', on);
+    if (on){
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(function(){});
+      }
+      startMusic();
+    } else if (document.fullscreenElement && document.exitFullscreen){
+      document.exitFullscreen().catch(function(){});
+    }
+  }
+  document.addEventListener('fullscreenchange', function(){
+    if (!document.fullscreenElement) document.body.classList.remove('present');
+  });
+
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'p' || k === 'P'){
+      e.preventDefault();
+      present(!document.body.classList.contains('present'));
+      return;
+    }
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' '){
+      e.preventDefault(); go(idx + 1);
+    } else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp'){
+      e.preventDefault(); go(idx - 1);
+    } else if (k === 'Home'){ e.preventDefault(); go(0); }
+    else if (k === 'End'){ e.preventDefault(); go(slides.length - 1); }
+  });
+
+  /* advance on click while presenting */
+  deck.addEventListener('click', function(e){
+    if (!document.body.classList.contains('present')) return;
+    if (e.target.closest('button, a')) return;
+    go(idx + 1);
+  });
+
+  setTimeout(function(){ hint.classList.add('gone'); }, 7000);
+
+  /* ---------- the song ---------- */
+  var VIDEOS = ['MhEgJqdUBcA','oxHnRfhDmrk','A3DUsxOIZi4'];
+  var vi = 0, player = null, wanted = false, ready = false;
+  var btn = document.getElementById('soundBtn');
+
+  function loadAPI(cb){
+    if (window.YT && window.YT.Player) { cb(); return; }
+    window.onYouTubeIframeAPIReady = cb;
+    var s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  }
+
+  function build(){
+    player = new YT.Player('yt', {
+      height:'1', width:'1', videoId: VIDEOS[vi],
+      playerVars:{ autoplay:1, controls:0, playsinline:1, rel:0, loop:1, playlist:VIDEOS[vi] },
+      events:{
+        onReady: function(ev){
+          ready = true;
+          if (wanted){ ev.target.unMute(); ev.target.setVolume(70); ev.target.playVideo(); }
+        },
+        onError: function(){
+          if (vi < VIDEOS.length - 1){
+            vi++; ready = false;
+            try { player.destroy(); } catch(err){}
+            var d = document.createElement('div'); d.id = 'yt';
+            document.body.appendChild(d);
+            build();
+          }
+        }
+      }
+    });
+  }
+
+  function startMusic(){
+    wanted = true; setBtn(true);
+    if (!player){ loadAPI(build); return; }
+    if (ready){ player.unMute(); player.setVolume(70); player.playVideo(); }
+  }
+  function stopMusic(){
+    wanted = false; setBtn(false);
+    if (player && ready){ player.pauseVideo(); }
+  }
+  function setBtn(on){
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-label', on ? 'Turn off sound' : 'Turn on sound');
+  }
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (wanted) stopMusic(); else startMusic();
+  });
+
+  /* first gesture anywhere cues the song, once */
+  function firstGesture(){
+    document.removeEventListener('click', firstGesture);
+    document.removeEventListener('keydown', firstGesture);
+    if (!wanted && !player) startMusic();
+  }
+  document.addEventListener('click', firstGesture);
+  document.addEventListener('keydown', firstGesture);
+
+  /* ---------- twinkling stars ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('canvas.stars'), function(cv){
+    var ctx = cv.getContext('2d'), stars = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var density = parseFloat(cv.dataset.density || '1');
+    function seed(){
+      var w = cv.clientWidth, h = cv.clientHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round(Math.min(46, Math.max(16, (w * h) / 42000)) * density);
+      stars = [];
+      for (var i = 0; i < n; i++){
+        stars.push({
+          x: Math.random() * w, y: Math.random() * h,
+          r: 0.6 + Math.random() * 1.15,
+          ph: Math.random() * Math.PI * 2,
+          sp: 0.00030 + Math.random() * 0.00050
+        });
+      }
+    }
+    function frame(t){
+      var w = cv.clientWidth, h = cv.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < stars.length; i++){
+        var s = stars[i];
+        var a = reduce ? 0.16 : (Math.sin(t * s.sp + s.ph) + 1) / 2;
+        a = 0.04 + a * a * a * 0.30;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(214,212,220,' + a.toFixed(3) + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    seed();
+    window.addEventListener('resize', function(){
+      clearTimeout(cv.__r); cv.__r = setTimeout(seed, 200);
+    });
+    requestAnimationFrame(frame);
+  });
+})();
+</script>
+</body>
+</html>
