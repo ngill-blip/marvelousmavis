@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mavis Joshi — Memorial</title>
-<meta name="description" content="A memorial for Mavis Joshi, 2005 to 2026. Shine like a star that you are.">
+<meta name="description" content="A memorial for Mavis Joshi, 2005 to 2026. Shine like the star that you are.">
 <link rel="canonical" href="https://marvelousmavis.com/memorial/">
 <meta name="theme-color" content="#fbfaf9">
 <meta name="robots" content="noindex">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Marvelous Mavis">
 <meta property="og:url" content="https://marvelousmavis.com/memorial/">
 <meta property="og:title" content="Mavis Joshi — Memorial">
-<meta property="og:description" content="Shine like a star that you are.">
+<meta property="og:description" content="Shine like the star that you are.">
 <meta property="og:image" content="https://marvelousmavis.com/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,6 +71,16 @@ h2.title{
 }
 h2.title .amp{ color:var(--purple-2); }
 
+/* a tight halo hugging the letterforms — keeps titles legible on top of
+   artwork now that the full-width white veils are gone */
+.halo{
+  text-shadow:
+    0 0 10px rgba(251,250,249,.95),
+    0 0 22px rgba(251,250,249,.85),
+    0 0 46px rgba(251,250,249,.65),
+    0 1px 2px rgba(251,250,249,.9);
+}
+
 /* ---------- 1. hero ---------- */
 .s-hero .pad{ justify-content:center; }
 .hero-grid{
@@ -85,33 +95,25 @@ h2.title .amp{ color:var(--purple-2); }
 .hero-sub{ margin-top:1.6rem; color:var(--dim); font-size:clamp(.9rem,1.5vw,1.05rem); letter-spacing:.03em; }
 .hero-art{ width:100%; height:auto; display:block; }
 
-/* ---------- full-bleed slides (2 and 3) ---------- */
+/* ---------- full-bleed slides ---------- */
 .slide > .bg{
   position:absolute; inset:0; z-index:-2;
   background-size:cover; background-position:center; background-repeat:no-repeat;
 }
 .s-bleed .pad{ justify-content:flex-end; padding-bottom:clamp(44px,7vh,84px); }
-.s-bleed > .veil{
-  position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(to top,
-    rgba(251,250,249,.97) 0%,
-    rgba(251,250,249,.86) 13%,
-    rgba(251,250,249,.34) 27%,
-    rgba(251,250,249,0) 42%);
-}
-.s-bleed h2.title{ text-shadow:0 1px 22px rgba(251,250,249,.85); }
 
-/* ---------- painted grounds from SUICIDELAND (4,5,6,7,9) ---------- */
-.s-paint > .veil{
-  position:absolute; inset:0; z-index:-1;
-  background:rgba(251,250,249,.40);
+/* on a dark photograph the title flips to white rather than sitting on a veil */
+.on-dark h2.title{ color:#fff; }
+.on-dark h2.title .amp{ color:var(--purple-3); }
+.on-dark h2.title.halo{
+  text-shadow:
+    0 2px 16px rgba(18,10,42,.78),
+    0 0 44px rgba(18,10,42,.55),
+    0 1px 3px rgba(18,10,42,.7);
 }
-.s-paint h2.title{ text-shadow:0 1px 20px rgba(251,250,249,.92); }
-/* a white print mat, drawn with box-shadow so it costs no layout space */
-.s-paint .fit-row img{
-  box-shadow:0 0 0 clamp(6px,.65vw,11px) var(--paper),
-             0 20px 46px rgba(75,46,143,.22);
-}
+body.dark-chrome .topbar{ color:rgba(255,255,255,.82); text-shadow:0 1px 14px rgba(18,10,42,.8); }
+body.dark-chrome .topbar a{ color:#fff; }
+body.dark-chrome .counter{ color:rgba(255,255,255,.82); text-shadow:0 1px 14px rgba(18,10,42,.8); }
 
 /* ---------- photo slides ---------- */
 .fit-row{
@@ -121,7 +123,9 @@ h2.title .amp{ color:var(--purple-2); }
 .fit-row img{
   max-height:100%; max-width:100%; width:auto; height:auto;
   object-fit:contain; display:block;
-  box-shadow:0 18px 48px rgba(75,46,143,.16);
+  /* a white print mat, drawn with box-shadow so it costs no layout space */
+  box-shadow:0 0 0 clamp(6px,.65vw,11px) var(--paper),
+             0 20px 46px rgba(75,46,143,.22);
 }
 .fit-row.two img{ max-width:calc(50% - clamp(7px,1.2vw,17px)); }
 .s-fit.single .pad{
@@ -132,26 +136,107 @@ h2.title .amp{ color:var(--purple-2); }
 .s-fit.single .fit-row{ flex:1 1 auto; justify-content:flex-end; height:100%; }
 
 /* ---------- 8. poem ---------- */
-.s-poem .pad{ justify-content:center; padding-top:clamp(58px,8.6vh,96px); }
+/* the extra floor keeps the last line clear of the hint bar and the player */
+.s-poem .pad{
+  justify-content:flex-start;
+  padding-top:clamp(44px,6.4vh,76px);
+  padding-bottom:clamp(64px,9.5vh,104px);
+}
 .poem-head h2{
   font-family:var(--hand); font-weight:400; letter-spacing:0;
   font-size:clamp(2.3rem,4.9vw,3.9rem); color:var(--purple);
 }
 .poem{
+  flex:1 1 auto; min-height:0; overflow:hidden;
   column-count:3; column-gap:clamp(24px,4vw,68px); column-fill:balance;
   font-family:var(--hand); font-weight:400;
-  font-size:clamp(.95rem,1.26vw,1.19rem); line-height:1.52; color:var(--ink);
+  font-size:1.25rem; line-height:1.5; color:var(--ink);
 }
-.poem p{ break-inside:avoid; margin:0 0 1.05em; }
+.poem p{ break-inside:avoid; margin:0 0 1em; }
 .poem p:last-child{ margin-bottom:0; }
 @media (max-width:1000px){ .poem{ column-count:2; } }
 @media (max-width:640px){
-  .poem{ column-count:1; font-size:1.05rem; }
+  .poem{ column-count:1; overflow:visible; font-size:1.15rem !important; }
   .s-poem{ height:auto; min-height:100dvh; }
-  .s-poem .pad{ padding-top:64px; padding-bottom:64px; }
+  .s-poem .pad{ padding-top:64px; padding-bottom:110px; }
 }
 
 canvas.stars{ position:absolute; inset:0; z-index:-1; width:100%; height:100%; }
+
+/* ---------- the films on the last slide ---------- */
+.title-row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:clamp(16px,3vw,40px); flex-wrap:wrap;
+}
+.filmbtn{
+  display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+  padding:11px 22px; font-family:var(--sans);
+  font-size:.74rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--purple); background:rgba(251,250,249,.94);
+  border:1px solid rgba(75,46,143,.35);
+  box-shadow:0 10px 28px rgba(75,46,143,.16);
+}
+.filmbtn:hover{ background:#fff; border-color:var(--purple-2); }
+.filmbtn svg{ width:12px; height:12px; fill:currentColor; flex:0 0 auto; }
+
+/* the full-screen stage the films play on */
+.stage{
+  position:fixed; inset:0; z-index:200; background:#0c0720;
+  display:flex; align-items:center; justify-content:center;
+}
+.stage[hidden]{ display:none; }
+.stage video{
+  max-width:100%; max-height:100%; width:auto; height:100%;
+  display:block; background:#000;
+}
+.stage-label{
+  position:absolute; top:22px; left:24px; z-index:5;
+  font-size:.66rem; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(255,255,255,.55); max-width:60vw;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.stage-close{
+  position:absolute; top:16px; right:18px; z-index:6;
+  width:40px; height:40px; display:grid; place-items:center; cursor:pointer;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.3);
+  color:#fff; padding:0;
+}
+.stage-close:hover{ background:rgba(255,255,255,.2); border-color:#fff; }
+.stage-close svg{ width:14px; height:14px; fill:currentColor; }
+
+.stage-prompt{
+  position:absolute; inset:0; z-index:4;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; text-align:center; padding:36px;
+  background:rgba(12,7,32,.88);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.stage-prompt[hidden]{ display:none; }
+.sp-eyebrow{ font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+.sp-title{
+  font-family:var(--hand); font-weight:400; color:#fff; line-height:1.06;
+  font-size:clamp(2.4rem,6vw,4.6rem);
+}
+.sp-sub{ color:rgba(255,255,255,.6); font-size:.88rem; letter-spacing:.05em; margin-top:-4px; }
+.sp-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
+.sp-go{
+  display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+  padding:13px 30px; font-family:var(--sans);
+  font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+  color:#fff; background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.5);
+}
+.sp-go:hover{ background:rgba(255,255,255,.2); border-color:#fff; }
+.sp-go svg{ width:12px; height:12px; fill:currentColor; flex:0 0 auto; }
+.sp-go.ghost{ border-color:rgba(255,255,255,.22); color:rgba(255,255,255,.72); }
+.sp-go.ghost:hover{ color:#fff; }
+.sp-hint{ margin-top:12px; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.34); }
+.sp-hint kbd{ font-family:var(--sans); border:1px solid rgba(255,255,255,.28); padding:1px 5px; margin:0 2px; }
+
+body.stage-on .player, body.stage-on .topbar,
+body.stage-on .counter, body.stage-on .hint, body.stage-on .progress{
+  opacity:0 !important; pointer-events:none;
+}
 
 /* ---------- chrome ---------- */
 .topbar{
@@ -159,60 +244,187 @@ canvas.stars{ position:absolute; inset:0; z-index:-1; width:100%; height:100%; }
   display:flex; align-items:center; justify-content:space-between;
   padding:14px clamp(18px,4vw,40px);
   font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim);
-  background:linear-gradient(to bottom, rgba(251,250,249,.92), rgba(251,250,249,0));
   transition:opacity .3s ease;
+  text-shadow:0 0 10px rgba(251,250,249,.95), 0 0 22px rgba(251,250,249,.8);
 }
 .topbar a{ color:var(--purple); text-decoration:none; }
 .topbar a:hover{ color:var(--purple-2); }
 
 .hint{
-  position:fixed; bottom:22px; left:50%; transform:translateX(-50%); z-index:40;
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:40;
   font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim);
-  border:1px solid rgba(75,46,143,.22); padding:8px 14px; background:rgba(251,250,249,.86);
+  border:1px solid rgba(75,46,143,.22); padding:8px 14px; background:rgba(251,250,249,.9);
   transition:opacity .5s ease;
 }
 .hint kbd{ font-family:var(--sans); color:var(--purple); border:1px solid rgba(75,46,143,.3); padding:1px 5px; margin:0 2px; }
 .hint.gone{ opacity:0; pointer-events:none; }
 
-.sound-btn{
-  position:fixed; bottom:22px; right:22px; z-index:45;
-  width:46px; height:46px; display:grid; place-items:center;
-  border:1px solid rgba(75,46,143,.35); background:rgba(251,250,249,.9);
-  color:var(--purple); cursor:pointer; padding:0;
-}
-.sound-btn:hover{ background:var(--paper-2); }
-.sound-btn svg{ width:20px; height:20px; fill:currentColor; }
-.sound-btn .icon-on{ display:none; }
-.sound-btn.on .icon-on{ display:block; }
-.sound-btn.on .icon-off{ display:none; }
-.sound-btn.on{ border-color:var(--purple-2); background:var(--paper-2); }
-
-.nowplaying{
-  position:fixed; bottom:26px; right:82px; z-index:45;
-  font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dim);
-  max-width:44vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-  opacity:0; transition:opacity .4s ease; pointer-events:none;
-}
-.nowplaying.show{ opacity:1; }
-
 .counter{
-  position:fixed; bottom:24px; left:24px; z-index:40;
+  position:fixed; bottom:26px; left:26px; z-index:40;
   font-size:.72rem; letter-spacing:.16em; color:var(--dim); opacity:0;
   transition:opacity .3s ease; font-variant-numeric:tabular-nums;
+  text-shadow:0 0 10px rgba(251,250,249,.95);
 }
 .progress{
-  position:fixed; top:0; left:0; height:2px; z-index:50;
+  position:fixed; top:0; left:0; height:2px; z-index:70;
   background:var(--purple-2); width:0; transition:width .35s ease; opacity:0;
 }
 
 body.present .topbar{ opacity:0; pointer-events:none; }
 body.present .counter, body.present .progress{ opacity:1; }
 body.present .hint{ opacity:0; pointer-events:none; }
+body.present .player{ opacity:.35; }
+body.present .player:hover, body.present .player.open{ opacity:1; }
+
+/* ================= the music player ================= */
+.player{
+  position:fixed; right:clamp(14px,2vw,26px); bottom:clamp(14px,2vh,26px); z-index:65;
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+  font-family:var(--sans); transition:opacity .3s ease;
+}
+.pl-panel{
+  width:min(324px, calc(100vw - 32px));
+  background:rgba(251,250,249,.97);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border:1px solid rgba(75,46,143,.2);
+  box-shadow:0 20px 54px rgba(75,46,143,.20);
+  padding:15px 16px 13px;
+  display:flex; flex-direction:column; gap:11px;
+  transform-origin:bottom right;
+  transition:opacity .26s ease, transform .26s ease, visibility .26s ease;
+}
+.player:not(.open) .pl-panel{
+  opacity:0; visibility:hidden; pointer-events:none;
+  transform:translateY(12px) scale(.95);
+}
+.pl-head{ display:flex; align-items:center; justify-content:space-between; }
+.pl-eyebrow{ font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
+.pl-collapse{
+  width:22px; height:22px; display:grid; place-items:center; cursor:pointer;
+  background:none; border:1px solid rgba(75,46,143,.2); color:var(--dim); padding:0;
+}
+.pl-collapse:hover{ color:var(--purple); border-color:rgba(75,46,143,.45); }
+.pl-collapse svg{ width:11px; height:11px; fill:currentColor; }
+
+.pl-title{
+  font-family:var(--hand); font-size:1.62rem; line-height:1.12; color:var(--purple);
+}
+.pl-artist{ font-size:.76rem; letter-spacing:.06em; color:var(--dim); margin-top:-6px; }
+
+.pl-seek{
+  position:relative; height:14px; display:flex; align-items:center; cursor:pointer;
+  margin-top:2px;
+}
+.pl-seek::before{
+  content:""; position:absolute; left:0; right:0; height:3px;
+  background:rgba(75,46,143,.16);
+}
+.pl-seek-fill{
+  position:relative; height:3px; width:0; background:var(--purple-2);
+  transition:width .25s linear;
+}
+.pl-seek-fill::after{
+  content:""; position:absolute; right:-4px; top:50%; transform:translateY(-50%);
+  width:8px; height:8px; border-radius:50%; background:var(--purple);
+  opacity:0; transition:opacity .2s ease;
+}
+.pl-seek:hover .pl-seek-fill::after{ opacity:1; }
+.pl-times{
+  display:flex; justify-content:space-between;
+  font-size:.66rem; color:var(--dim); font-variant-numeric:tabular-nums; margin-top:-4px;
+}
+
+.pl-controls{ display:flex; align-items:center; gap:8px; }
+.pl-btn{
+  width:32px; height:32px; display:grid; place-items:center; cursor:pointer;
+  background:none; border:1px solid transparent; color:var(--purple); padding:0;
+}
+.pl-btn:hover{ background:var(--paper-2); }
+.pl-btn svg{ width:15px; height:15px; fill:currentColor; }
+.pl-btn.main{
+  width:40px; height:40px; border-color:rgba(75,46,143,.35); background:var(--paper-2);
+}
+.pl-btn.main svg{ width:17px; height:17px; }
+.pl-vol{ display:flex; align-items:center; gap:6px; margin-left:auto; }
+.pl-vol svg{ width:14px; height:14px; fill:var(--dim); flex:0 0 auto; }
+.pl-range{
+  -webkit-appearance:none; appearance:none; width:74px; height:3px;
+  background:rgba(75,46,143,.18); cursor:pointer; outline:none;
+}
+.pl-range::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none; width:11px; height:11px;
+  border-radius:50%; background:var(--purple-2); cursor:pointer;
+}
+.pl-range::-moz-range-thumb{
+  width:11px; height:11px; border:none; border-radius:50%;
+  background:var(--purple-2); cursor:pointer;
+}
+
+.pl-list{ list-style:none; border-top:1px solid rgba(75,46,143,.14); padding-top:9px; display:flex; flex-direction:column; gap:1px; }
+.pl-list button{
+  width:100%; display:flex; align-items:baseline; gap:9px; text-align:left;
+  background:none; border:none; cursor:pointer; padding:5px 6px;
+  font-family:var(--sans); font-size:.76rem; color:var(--dim); line-height:1.35;
+}
+.pl-list button:hover{ background:var(--paper-2); color:var(--ink); }
+.pl-list button .n{ font-size:.62rem; opacity:.6; font-variant-numeric:tabular-nums; flex:0 0 auto; }
+.pl-list button .t{ flex:1 1 auto; }
+.pl-list button .t b{ font-weight:500; color:inherit; }
+.pl-list li.active button{ color:var(--purple); }
+.pl-list li.active button .t b{ font-weight:600; }
+
+.pl-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  border-top:1px solid rgba(75,46,143,.14); padding-top:9px;
+  font-size:.68rem; color:var(--dim);
+}
+.pl-follow{ display:flex; align-items:center; gap:6px; cursor:pointer; }
+.pl-follow input{ accent-color:var(--purple-2); width:13px; height:13px; cursor:pointer; }
+.pl-src{ letter-spacing:.1em; text-transform:uppercase; font-size:.58rem; opacity:.65; }
+
+/* the collapsed pill */
+.pl-pill{
+  display:flex; align-items:center; gap:9px;
+  padding:6px 12px 6px 6px;
+  background:rgba(251,250,249,.95);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border:1px solid rgba(75,46,143,.22);
+  box-shadow:0 10px 28px rgba(75,46,143,.16);
+}
+.pl-pill-play{
+  width:32px; height:32px; flex:0 0 auto; display:grid; place-items:center;
+  background:var(--paper-2); border:1px solid rgba(75,46,143,.3);
+  color:var(--purple); cursor:pointer; padding:0;
+}
+.pl-pill-play:hover{ border-color:var(--purple-2); }
+.pl-pill-play svg{ width:14px; height:14px; fill:currentColor; }
+.pl-pill-open{
+  display:flex; align-items:center; gap:9px; background:none; border:none;
+  cursor:pointer; padding:2px 0; color:var(--dim); font-family:var(--sans);
+  font-size:.72rem; letter-spacing:.04em; max-width:190px;
+}
+.pl-pill-open:hover{ color:var(--purple); }
+.pl-pill-label{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pl-chev{ width:10px; height:10px; fill:currentColor; flex:0 0 auto; transition:transform .26s ease; }
+.player.open .pl-chev{ transform:rotate(180deg); }
+
+/* three little bars that dance while a track plays */
+.pl-eq{ display:flex; align-items:flex-end; gap:2px; height:12px; flex:0 0 auto; }
+.pl-eq i{ width:2px; height:3px; background:var(--purple-3); display:block; }
+.player.playing .pl-eq i{ animation:eq .9s ease-in-out infinite; background:var(--purple-2); }
+.player.playing .pl-eq i:nth-child(2){ animation-delay:.18s; }
+.player.playing .pl-eq i:nth-child(3){ animation-delay:.36s; }
+@keyframes eq{ 0%,100%{ height:3px; } 50%{ height:12px; } }
+
+.icon-pause{ display:none; }
+.player.playing .icon-play{ display:none; }
+.player.playing .icon-pause{ display:block; }
 
 #yt{ position:fixed; width:1px; height:1px; left:-9999px; top:0; opacity:0; pointer-events:none; }
 
 @media (prefers-reduced-motion: reduce){
   html, #deck{ scroll-behavior:auto; }
+  .player.playing .pl-eq i{ animation:none; height:7px; }
 }
 @media (max-width:860px){
   .s-fit.single .pad{ flex-direction:column; align-items:stretch; justify-content:flex-start; }
@@ -224,7 +436,8 @@ body.present .hint{ opacity:0; pointer-events:none; }
   .hero-art{ max-width:78%; margin:0 auto; }
   .fit-row{ flex-direction:column; }
   .fit-row.two img{ max-width:100%; max-height:calc(50% - 8px); }
-  .nowplaying{ display:none; }
+  .pl-pill-open{ max-width:118px; }
+  .hint{ display:none; }
 }
 </style>
 </head>
@@ -241,11 +454,11 @@ body.present .hint{ opacity:0; pointer-events:none; }
 
   <!-- 1 -->
   <section class="slide s-hero" data-track="vincent">
-    <canvas class="stars" data-density="0.6"></canvas>
+    <canvas class="stars" data-density="0.8"></canvas>
     <div class="pad">
       <div class="hero-grid">
         <div>
-          <h1>Shine like a <span class="star">star</span> that you are<span class="star">!</span></h1>
+          <h1>Shine like the <span class="star">star</span> that you are<span class="star">!</span></h1>
           <p class="hero-sub">Mavis Joshi &nbsp;·&nbsp; 2005 — 2026</p>
         </div>
         <img class="hero-art" src="s1-mavis.webp" alt="A drawing of Mavis laughing at a desk" width="1500" height="1372">
@@ -254,29 +467,35 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 2 -->
-  <section class="slide s-bleed">
+  <section class="slide s-bleed on-dark" data-track="vincent" data-dark="1">
     <div class="bg" style="background-image:url('s2-abode.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
-      <h2 class="title">Mavis’s abode and friends</h2>
+      <h2 class="title halo">Mavis’s abode and friends</h2>
     </div>
   </section>
 
   <!-- 3 -->
-  <section class="slide s-bleed">
-    <div class="bg" style="background-image:url('s3-cuties-room.webp')"></div>
-    <div class="veil"></div>
+  <section class="slide s-fit" data-track="vincent">
     <div class="pad">
-      <h2 class="title">Jiggy <span class="amp">&amp;</span> Mavis</h2>
+      <h2 class="title">Mama <span class="amp">&amp;</span> Mavis</h2>
+      <div class="fit-row two">
+        <img src="s3a-mama.webp" alt="Mavis and her mama pulling faces together over a shared drink">
+        <img src="s3b-mama.webp" alt="Mama sitting by the window, reading Mavis’s journal">
+      </div>
     </div>
   </section>
 
   <!-- 4 -->
-  <section class="slide s-fit s-paint" data-track="exist-for-love,dawning-of-spring">
+  <section class="slide s-fit s-paint" data-track="exist-for-love">
     <div class="bg" style="background-image:url('bg4.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
-      <h2 class="title">Pari’s Mavis</h2>
+      <div class="title-row">
+        <h2 class="title halo">Pari’s Mavis</h2>
+        <button class="filmbtn" data-films="pari">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+          To Mavis, With Love
+        </button>
+      </div>
       <div class="fit-row two">
         <img src="s4a-pari.webp" alt="Pari and Mavis making a heart with their arms">
         <img src="s4b-pari.webp" alt="Pari and Mavis dancing on the lawn">
@@ -285,11 +504,10 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 5 -->
-  <section class="slide s-fit s-paint">
+  <section class="slide s-fit s-paint" data-track="exist-for-love">
     <div class="bg" style="background-image:url('bg5.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
-      <h2 class="title">Nehal’s Mavis</h2>
+      <h2 class="title halo">Nehal’s Mavis</h2>
       <div class="fit-row two">
         <img src="s5a-nehal.webp" alt="Mavis and friends at the escape room">
         <img src="s5b-nehal.webp" alt="Nehal and Mavis, heads together">
@@ -298,12 +516,11 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 6 -->
-  <section class="slide s-fit single s-paint">
+  <section class="slide s-fit single s-paint" data-track="exist-for-love">
     <div class="bg" style="background-image:url('bg6.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
       <div class="fit-copy">
-        <h2 class="title">Sameer’s Mavis</h2>
+        <h2 class="title halo">Sameer’s Mavis</h2>
       </div>
       <div class="fit-row">
         <img src="s6-sameer.webp" alt="Mavis and Sameer at the pride march">
@@ -312,11 +529,10 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 7 -->
-  <section class="slide s-fit s-paint">
+  <section class="slide s-fit s-paint" data-track="dawning-of-spring">
     <div class="bg" style="background-image:url('bg7.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
-      <h2 class="title">Manasvi’s Mavis</h2>
+      <h2 class="title halo">Manasvi’s Mavis</h2>
       <div class="fit-row">
         <img src="s7-manasvi.webp" alt="Mavis and friends at a restaurant">
       </div>
@@ -324,13 +540,13 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 8 -->
-  <section class="slide s-poem">
-    <canvas class="stars" data-density="1.15"></canvas>
+  <section class="slide s-poem" data-track="dawning-of-spring">
+    <canvas class="stars" data-density="1.4"></canvas>
     <div class="pad">
       <div class="poem-head">
         <h2>The Sky</h2>
       </div>
-      <div class="poem">
+      <div class="poem" id="poem">
         <p>The sky, it is so high up,<br>And I can’t reach it at all.<br>I can’t think, I’m stuck.<br>Every time I fall.</p>
         <p>I look at the stars,<br>And I see my dreams.<br>The things I want,<br>The things unseen.</p>
         <p>What’s the point,<br>of the sky so high?<br>If I can’t even see it<br>With my own eyes?</p>
@@ -349,11 +565,16 @@ body.present .hint{ opacity:0; pointer-events:none; }
   </section>
 
   <!-- 9 -->
-  <section class="slide s-fit s-paint">
+  <section class="slide s-fit s-paint" data-track="dawning-of-spring">
     <div class="bg" style="background-image:url('bg9.webp')"></div>
-    <div class="veil"></div>
     <div class="pad">
-      <h2 class="title">Ananya <span class="amp">&amp;</span> Mavi</h2>
+      <div class="title-row">
+        <h2 class="title halo">Ananya <span class="amp">&amp;</span> Mavie</h2>
+        <button class="filmbtn" id="openFilms" data-films="ananya">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+          To Mavis, With Love
+        </button>
+      </div>
       <div class="fit-row">
         <img src="s9-ananya.webp" alt="Ananya and Mavis at brunch">
       </div>
@@ -363,14 +584,85 @@ body.present .hint{ opacity:0; pointer-events:none; }
 </div>
 
 <div class="counter" id="counter">1 / 9</div>
-<div class="nowplaying" id="nowplaying"></div>
 
 <div class="hint" id="hint">Press <kbd>P</kbd> to present &nbsp;·&nbsp; <kbd>→</kbd> next slide</div>
 
-<button class="sound-btn" id="soundBtn" aria-label="Turn on sound" title="Sound">
-  <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" opacity=".45"/><path d="M19.7 5.3 5.3 19.7l-1.4-1.4L18.3 3.9z"/></svg>
-  <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 2.2v2.1c3 .8 5 3.4 5 6.7s-2 5.9-5 6.7v2.1c4.1-.9 7-4.4 7-8.8s-2.9-7.9-7-8.8z"/></svg>
-</button>
+<!-- ================= music player ================= -->
+<div class="player" id="player">
+
+  <div class="pl-panel" id="plPanel" role="region" aria-label="Music player">
+    <div class="pl-head">
+      <span class="pl-eyebrow">Now playing</span>
+      <button class="pl-collapse" id="plCollapse" aria-label="Collapse player" title="Collapse">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16v2H4z"/></svg>
+      </button>
+    </div>
+
+    <div class="pl-title" id="plTitle">Vincent</div>
+    <div class="pl-artist" id="plArtist">Don McLean</div>
+
+    <div class="pl-seek" id="plSeek" role="slider" aria-label="Seek" tabindex="0"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="pl-seek-fill" id="plSeekFill"></div>
+    </div>
+    <div class="pl-times"><span id="plNow">0:00</span><span id="plDur">0:00</span></div>
+
+    <div class="pl-controls">
+      <button class="pl-btn" id="plPrev" aria-label="Previous track" title="Previous">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zm12 0v14l-9-7z"/></svg>
+      </button>
+      <button class="pl-btn main" id="plPlay" aria-label="Play" title="Play / pause">
+        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+      </button>
+      <button class="pl-btn" id="plNext" aria-label="Next track" title="Next">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM6 5l9 7-9 7z"/></svg>
+      </button>
+      <div class="pl-vol">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+        <input class="pl-range" id="plVol" type="range" min="0" max="100" value="70" aria-label="Volume">
+      </div>
+    </div>
+
+    <ul class="pl-list" id="plList"></ul>
+
+    <div class="pl-foot">
+      <label class="pl-follow" title="Change the song automatically as the slides change">
+        <input type="checkbox" id="plFollow" checked> Follow slides
+      </label>
+      <span class="pl-src">YouTube</span>
+    </div>
+  </div>
+
+  <div class="pl-pill">
+    <button class="pl-pill-play" id="plPillPlay" aria-label="Play" title="Play / pause">
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+    </button>
+    <button class="pl-pill-open" id="plPillOpen" aria-expanded="false" aria-controls="plPanel">
+      <span class="pl-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="pl-pill-label" id="plPillLabel">Music</span>
+      <svg class="pl-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l8 8H4z"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<!-- ================= the film stage ================= -->
+<div class="stage" id="stage" hidden role="dialog" aria-modal="true" aria-label="Films">
+  <span class="stage-label" id="stageLabel"></span>
+  <video id="stageVid" playsinline preload="metadata"></video>
+  <button class="stage-close" id="stageClose" aria-label="Close films" title="Close (Esc)">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 5.7 18.3 4.3 12 10.6 5.7 4.3 4.3 5.7 10.6 12l-6.3 6.3 1.4 1.4L12 13.4l6.3 6.3 1.4-1.4L13.4 12z"/></svg>
+  </button>
+  <div class="stage-prompt" id="stagePrompt">
+    <p class="sp-eyebrow" id="spEyebrow">Film 1 of 2</p>
+    <h3 class="sp-title" id="spTitle">What Was I Made For</h3>
+    <p class="sp-sub" id="spSub"></p>
+    <div class="sp-row" id="spRow"></div>
+    <p class="sp-hint"><kbd>Esc</kbd> to close &nbsp;·&nbsp; <kbd>space</kbd> to pause</p>
+  </div>
+</div>
 
 <div id="yt"></div>
 
@@ -383,37 +675,89 @@ body.present .hint{ opacity:0; pointer-events:none; }
   var hint = document.getElementById('hint');
   var idx = 0;
 
-  /* ================= the music library ================= */
-  /* one entry per track: ids are tried in order if a video is embed-blocked */
-  var TRACKS = {
-    'vincent':          { label:'Vincent — Don McLean',              ids:['MhEgJqdUBcA','oxHnRfhDmrk','A3DUsxOIZi4'] },
-    'exist-for-love':   { label:'Exist For Love — AURORA',           ids:['7YDkrJaiCrw','AT7IEOflOF8','kWE1jNVAfT8'] },
-    'dawning-of-spring':{ label:'Dawning of Spring — Anson Seabra',  ids:['7B2ZW50HZvk','oN4v-kAHz-U','blrXEhHDYaE'] }
+  /* ================= the music library =================
+     each entry lists a few YouTube ids — if one is blocked from
+     embedding, the player quietly falls through to the next.       */
+  var TRACKS = [
+    { key:'vincent',           title:'Vincent',           artist:'Don McLean',   sub:'Starry, starry night',
+      ids:['MhEgJqdUBcA','oxHnRfhDmrk','AqrfeUqcNMY'] },
+    { key:'exist-for-love',    title:'Exist For Love',    artist:'AURORA',       sub:'',
+      ids:['7YDkrJaiCrw','kWE1jNVAfT8','feH_rWJG-s0'] },
+    { key:'dawning-of-spring', title:'Dawning of Spring', artist:'Anson Seabra', sub:'',
+      ids:['7B2ZW50HZvk','oN4v-kAHz-U','blrXEhHDYaE'] }
+  ];
+  function trackIndexByKey(k){
+    for (var i=0;i<TRACKS.length;i++) if (TRACKS[i].key === k) return i;
+    return -1;
+  }
+
+  /* ---- player state ---- */
+  var cur = 0;          /* which track */
+  var alt = 0;          /* which fallback id for that track */
+  var playing = false;  /* what the listener asked for */
+  var started = false;  /* have we ever had a gesture */
+  var player = null, ready = false, pending = false;
+  var scrubbing = false;
+
+  var el = {
+    root:     document.getElementById('player'),
+    panel:    document.getElementById('plPanel'),
+    title:    document.getElementById('plTitle'),
+    artist:   document.getElementById('plArtist'),
+    seek:     document.getElementById('plSeek'),
+    fill:     document.getElementById('plSeekFill'),
+    now:      document.getElementById('plNow'),
+    dur:      document.getElementById('plDur'),
+    play:     document.getElementById('plPlay'),
+    prev:     document.getElementById('plPrev'),
+    next:     document.getElementById('plNext'),
+    vol:      document.getElementById('plVol'),
+    list:     document.getElementById('plList'),
+    follow:   document.getElementById('plFollow'),
+    collapse: document.getElementById('plCollapse'),
+    pillPlay: document.getElementById('plPillPlay'),
+    pillOpen: document.getElementById('plPillOpen'),
+    pillLbl:  document.getElementById('plPillLabel')
   };
 
-  var audioOn = false;      /* has the listener asked for sound */
-  var player = null, ready = false;
-  var queue = [], qi = 0, alt = 0;   /* current slide's track keys, position, id fallback */
-  var loadedFor = null;              /* which slide's queue is loaded */
-  var btn = document.getElementById('soundBtn');
-  var np = document.getElementById('nowplaying');
+  /* ---- build the track list ---- */
+  TRACKS.forEach(function(t, i){
+    var li = document.createElement('li');
+    var b  = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span class="n">' + (i+1) + '</span>' +
+                  '<span class="t"><b>' + t.title + '</b><br>' + t.artist + '</span>';
+    b.addEventListener('click', function(){
+      /* a hand-picked track wins over the slides until they say otherwise */
+      if (i !== cur && el.follow.checked) el.follow.checked = false;
+      select(i, true);
+    });
+    li.appendChild(b);
+    el.list.appendChild(li);
+  });
 
-  function tracksFor(i){
-    var d = slides[i].dataset.track;
-    if (!d) return [];
-    return d.split(',').map(function(s){ return s.trim(); }).filter(function(s){ return TRACKS[s]; });
-  }
-  function showNP(text){
-    np.textContent = text || '';
-    np.classList.toggle('show', !!text);
-  }
-  function currentId(){
-    var t = TRACKS[queue[qi]];
-    return t ? t.ids[Math.min(alt, t.ids.length - 1)] : null;
+  function paint(){
+    var t = TRACKS[cur];
+    el.title.textContent  = t.title;
+    el.artist.textContent = t.sub ? t.artist + ' · ' + t.sub : t.artist;
+    el.pillLbl.textContent = playing ? t.title : (started ? t.title : 'Music');
+    el.play.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    el.pillPlay.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    el.root.classList.toggle('playing', playing);
+    Array.prototype.forEach.call(el.list.children, function(li, i){
+      li.classList.toggle('active', i === cur);
+    });
   }
 
+  function mmss(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  /* ---- the YouTube plumbing ---- */
   function loadAPI(cb){
-    if (window.YT && window.YT.Player) { cb(); return; }
+    if (window.YT && window.YT.Player){ cb(); return; }
     var prev = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function(){ if (prev) prev(); cb(); };
     if (!document.getElementById('yt-api')){
@@ -424,57 +768,125 @@ body.present .hint{ opacity:0; pointer-events:none; }
   }
 
   function build(){
-    var id = currentId();
-    if (!id) return;
     player = new YT.Player('yt', {
-      height:'1', width:'1', videoId:id,
+      height:'1', width:'1', videoId: TRACKS[cur].ids[alt],
       playerVars:{ autoplay:1, controls:0, playsinline:1, rel:0 },
       events:{
         onReady: function(ev){
           ready = true;
-          ev.target.setVolume(70); ev.target.unMute(); ev.target.playVideo();
+          ev.target.setVolume(parseInt(el.vol.value, 10));
+          ev.target.unMute();
+          if (pending || playing){ ev.target.playVideo(); }
+          pending = false;
         },
         onStateChange: function(ev){
-          if (ev.data === YT.PlayerState.ENDED) next();
+          if (ev.data === YT.PlayerState.ENDED){ step(1, true); }
+          else if (ev.data === YT.PlayerState.PLAYING){ playing = true;  paint(); }
+          else if (ev.data === YT.PlayerState.PAUSED){  playing = false; paint(); }
         },
         onError: function(){
-          var t = TRACKS[queue[qi]];
-          if (t && alt < t.ids.length - 1){ alt++; play(); }
-          else next();
+          /* this upload will not embed — try the next id, then the next track */
+          var t = TRACKS[cur];
+          if (alt < t.ids.length - 1){ alt++; load(true); }
+          else { step(1, true); }
         }
       }
     });
   }
 
-  function play(){
-    var id = currentId();
-    if (!id){ showNP(''); return; }
-    showNP(TRACKS[queue[qi]].label);
-    if (!player){ loadAPI(build); return; }
-    if (!ready) return;
-    player.loadVideoById(id);
-    player.unMute(); player.setVolume(70); player.playVideo();
-  }
-  function next(){
-    if (!queue.length) return;
-    qi = (qi + 1) % queue.length; alt = 0;
-    play();
-  }
-  function stop(){
-    showNP('');
-    if (player && ready){ try { player.stopVideo(); } catch(e){} }
+  function load(autoplay){
+    var id = TRACKS[cur].ids[alt];
+    paint();
+    if (!player){ pending = !!autoplay; playing = !!autoplay; loadAPI(build); return; }
+    if (!ready){ pending = !!autoplay; return; }
+    if (autoplay){ player.loadVideoById(id); playing = true; }
+    else { player.cueVideoById(id); playing = false; }
+    player.setVolume(parseInt(el.vol.value, 10));
+    player.unMute();
+    paint();
   }
 
-  /* the slide decides the song */
-  function cue(i, force){
-    if (!audioOn) return;
-    var q = tracksFor(i);
-    var key = q.join('|');
-    if (!force && key === loadedFor) return;
-    loadedFor = key;
-    queue = q; qi = 0; alt = 0;
-    if (!q.length){ stop(); return; }
-    play();
+  function select(i, autoplay){
+    if (i < 0 || i >= TRACKS.length) return;
+    cur = i; alt = 0; started = true;
+    load(autoplay !== false);
+  }
+  function step(dir, autoplay){
+    select((cur + dir + TRACKS.length) % TRACKS.length, autoplay);
+  }
+
+  function toggle(){
+    started = true;
+    if (!player){ playing = true; load(true); return; }
+    if (!ready){ pending = true; playing = true; paint(); return; }
+    if (playing){ player.pauseVideo(); playing = false; }
+    else { player.playVideo(); playing = true; }
+    paint();
+  }
+
+  el.play.addEventListener('click', toggle);
+  el.pillPlay.addEventListener('click', toggle);
+  el.prev.addEventListener('click', function(){ step(-1, true); });
+  el.next.addEventListener('click', function(){ step(1, true); });
+
+  el.vol.addEventListener('input', function(){
+    if (player && ready) player.setVolume(parseInt(el.vol.value, 10));
+  });
+
+  /* expand / collapse */
+  function open(on){
+    el.root.classList.toggle('open', on);
+    el.pillOpen.setAttribute('aria-expanded', on ? 'true' : 'false');
+  }
+  el.pillOpen.addEventListener('click', function(){
+    open(!el.root.classList.contains('open'));
+  });
+  el.collapse.addEventListener('click', function(){ open(false); });
+
+  /* seeking */
+  function seekTo(clientX){
+    if (!player || !ready) return;
+    var r = el.seek.getBoundingClientRect();
+    var f = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+    var d = player.getDuration();
+    if (d) player.seekTo(d * f, true);
+    el.fill.style.width = (f * 100) + '%';
+  }
+  el.seek.addEventListener('pointerdown', function(e){
+    scrubbing = true; el.seek.setPointerCapture(e.pointerId); seekTo(e.clientX);
+  });
+  el.seek.addEventListener('pointermove', function(e){ if (scrubbing) seekTo(e.clientX); });
+  el.seek.addEventListener('pointerup', function(e){
+    scrubbing = false;
+    try { el.seek.releasePointerCapture(e.pointerId); } catch(err){}
+  });
+  el.seek.addEventListener('keydown', function(e){
+    if (!player || !ready) return;
+    var d = player.getDuration(); if (!d) return;
+    if (e.key === 'ArrowRight'){ e.preventDefault(); e.stopPropagation(); player.seekTo(Math.min(d, player.getCurrentTime() + 5), true); }
+    if (e.key === 'ArrowLeft'){  e.preventDefault(); e.stopPropagation(); player.seekTo(Math.max(0, player.getCurrentTime() - 5), true); }
+  });
+
+  /* the ticking clock */
+  setInterval(function(){
+    if (!player || !ready || scrubbing) return;
+    var c = 0, d = 0;
+    try { c = player.getCurrentTime() || 0; d = player.getDuration() || 0; } catch(e){ return; }
+    el.now.textContent = mmss(c);
+    el.dur.textContent = mmss(d);
+    var f = d ? (c / d * 100) : 0;
+    el.fill.style.width = f + '%';
+    el.seek.setAttribute('aria-valuenow', Math.round(f));
+  }, 500);
+
+  /* ---- the slides can drive the song ---- */
+  function cueForSlide(i, force){
+    if (!el.follow.checked) return;
+    var key = slides[i].dataset.track;
+    if (!key) return;
+    var t = trackIndexByKey(key);
+    if (t < 0 || (t === cur && !force)) return;
+    select(t, started || playing);
   }
 
   /* ================= which slide are we on ================= */
@@ -485,7 +897,14 @@ body.present .hint{ opacity:0; pointer-events:none; }
     idx = i;
     counter.textContent = (i + 1) + ' / ' + slides.length;
     progress.style.width = ((i + 1) / slides.length * 100) + '%';
-    if (changed) cue(i);
+    document.body.classList.toggle('dark-chrome', !!slides[i].dataset.dark);
+    if (changed) cueForSlide(i);
+    /* arriving at the last slide, quietly warm up the first film */
+    if (changed && vid && i === slides.length - 1 && !stageOpen && !vid.getAttribute('src')){
+      vid.preload = 'auto';
+      vid.src = FILM_SETS.ananya[0].src;
+      vid.poster = FILM_SETS.ananya[0].poster;
+    }
   }
   deck.addEventListener('scroll', function(){
     clearTimeout(deck.__t); deck.__t = setTimeout(sync, 80);
@@ -498,14 +917,162 @@ body.present .hint{ opacity:0; pointer-events:none; }
     idx = t; setTimeout(sync, 400);
   }
 
+  /* ================= the two films ================= */
+  /* each slide can carry its own set — the two long ones are the web-ready
+     cuts already living in the site root */
+  var FILM_SETS = {
+    pari: [
+      { src:'pari-film.mp4', poster:'pari-film-poster.jpg', title:'To Mavis, With Love' }
+    ],
+    ananya: [
+      { src:'../wwimf.mp4',       poster:'../wwimf-poster.jpg',       title:'What Was I Made For' },
+      { src:'../pondicherry.mp4', poster:'../pondicherry-poster.jpg', title:'Pondicherry' }
+    ]
+  };
+  var FILMS = FILM_SETS.ananya;
+  var played = [];   /* which ones have been shown this time round */
+  var launcher = null;
+  var stage    = document.getElementById('stage');
+  var vid      = document.getElementById('stageVid');
+  var prompt_  = document.getElementById('stagePrompt');
+  var spRow    = document.getElementById('spRow');
+  var stageLbl = document.getElementById('stageLabel');
+  var stageOpen = false, fi = 0, musicWasPlaying = false;
+
+  function btn(label, kind, fn){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sp-go' + (kind === 'ghost' ? ' ghost' : '');
+    b.innerHTML = (kind === 'ghost' ? '' :
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>') +
+      '<span>' + label + '</span>';
+    b.addEventListener('click', fn);
+    return b;
+  }
+
+  function showPrompt(kind){
+    vid.controls = false;
+    prompt_.hidden = false;
+    stageLbl.textContent = '';        /* the prompt says which film — no need to say it twice */
+    spRow.innerHTML = '';
+    var eb = document.getElementById('spEyebrow'),
+        tt = document.getElementById('spTitle'),
+        sb = document.getElementById('spSub');
+    var f = FILMS[fi];
+
+    if (kind === 'error'){
+      eb.textContent = 'Could not play';
+      tt.textContent = f.title;
+      sb.textContent = 'This film would not load — check that ' + f.src.replace('../','') + ' is on the server.';
+      spRow.appendChild(btn('Try again', '', function(){ playFilm(fi); }));
+      FILMS.forEach(function(o, i){
+        if (i !== fi) spRow.appendChild(btn(o.title, 'ghost', function(){ playFilm(i); }));
+      });
+      spRow.appendChild(btn('Close', 'ghost', closeStage));
+    }
+    else if (kind === 'end'){
+      eb.textContent = FILMS.length > 1 ? 'That was both of them' : '';
+      tt.textContent = 'Thank you';
+      sb.textContent = '';
+      spRow.appendChild(btn(FILMS.length > 1 ? 'Choose a film' : 'Watch again', '', function(){
+        played = [];
+        if (FILMS.length > 1) showPrompt('menu'); else playFilm(0);
+      }));
+      spRow.appendChild(btn('Close', 'ghost', closeStage));
+    }
+    else if (kind === 'next'){
+      eb.textContent = 'Next';
+      tt.textContent = f.title;
+      sb.textContent = '';
+      spRow.appendChild(btn('Play', '', function(){ playFilm(fi); }));
+      spRow.appendChild(btn('Choose a film', 'ghost', function(){ showPrompt('menu'); }));
+    }
+    else {   /* the menu — pick any of them, in any order */
+      eb.textContent = FILMS.length > 1 ? (FILMS.length + ' films') : 'A film';
+      tt.textContent = 'To Mavis, With Love';
+      sb.textContent = '';
+      if (FILMS.length === 1){
+        spRow.appendChild(btn('Play', '', function(){ playFilm(0); }));
+      } else {
+        FILMS.forEach(function(o, i){
+          spRow.appendChild(btn(o.title, played.indexOf(i) >= 0 ? 'ghost' : '', function(){ playFilm(i); }));
+        });
+      }
+    }
+    var first = spRow.querySelector('button');
+    if (first) setTimeout(function(){ first.focus(); }, 30);
+  }
+
+  function playFilm(i){
+    fi = i;
+    var f = FILMS[i];
+    if (played.indexOf(i) < 0) played.push(i);
+    stageLbl.textContent = f.title;
+    var want = new URL(f.src, location.href).href;
+    if (vid.src !== want){ vid.src = f.src; vid.poster = f.poster; }
+    else { try { vid.currentTime = 0; } catch(e){} }
+    prompt_.hidden = true;
+    vid.controls = true;
+    var p = vid.play();
+    if (p && p.catch) p.catch(function(){
+      /* autoplay refused, or the file is missing — say which */
+      showPrompt(vid.error ? 'error' : 'menu');
+    });
+  }
+
+  vid.addEventListener('error', function(){
+    if (stageOpen) showPrompt('error');
+  });
+
+  vid.addEventListener('ended', function(){
+    var other = -1;
+    for (var i = 0; i < FILMS.length; i++){ if (played.indexOf(i) < 0){ other = i; break; } }
+    if (other >= 0){ fi = other; showPrompt('next'); }   /* offer whichever is still unseen */
+    else showPrompt('end');
+  });
+
+  function openStage(key){
+    if (stageOpen) return;
+    FILMS = FILM_SETS[key] || FILM_SETS.ananya;
+    stageOpen = true; fi = 0; played = [];
+    stage.hidden = false;
+    document.body.classList.add('stage-on');
+    /* the soundtrack steps aside for the films */
+    musicWasPlaying = playing;
+    if (playing && player && ready){ player.pauseVideo(); playing = false; paint(); }
+    if (!document.fullscreenElement && document.documentElement.requestFullscreen){
+      document.documentElement.requestFullscreen().catch(function(){});
+    }
+    showPrompt('menu');
+  }
+
+  function closeStage(){
+    if (!stageOpen) return;
+    stageOpen = false;
+    try { vid.pause(); } catch(e){}
+    vid.removeAttribute('src'); vid.load();      /* stop it buffering in the background */
+    stage.hidden = true;
+    prompt_.hidden = false;
+    document.body.classList.remove('stage-on');
+    if (musicWasPlaying && player && ready){ player.playVideo(); playing = true; paint(); }
+    if (launcher) launcher.focus();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.filmbtn'), function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation(); launcher = b; openStage(b.dataset.films);
+    });
+  });
+  document.getElementById('stageClose').addEventListener('click', closeStage);
+
   /* ================= present mode ================= */
   function present(on){
     document.body.classList.toggle('present', on);
     if (on){
-      if (document.documentElement.requestFullscreen) {
+      if (document.documentElement.requestFullscreen){
         document.documentElement.requestFullscreen().catch(function(){});
       }
-      soundOn();
+      if (!started){ started = true; cueForSlide(idx, true); }
     } else if (document.fullscreenElement && document.exitFullscreen){
       document.exitFullscreen().catch(function(){});
     }
@@ -515,19 +1082,35 @@ body.present .hint{ opacity:0; pointer-events:none; }
   });
 
   document.addEventListener('keydown', function(e){
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea') return;
     var k = e.key;
+
+    /* while the films are up they own the keyboard — the deck must not move */
+    if (stageOpen){
+      if (k === 'Escape'){ e.preventDefault(); closeStage(); }
+      else if (k === ' '){
+        e.preventDefault();
+        if (!prompt_.hidden) return;
+        if (vid.paused) vid.play().catch(function(){}); else vid.pause();
+      }
+      else if (k === 'Enter' || k === 'ArrowRight'){
+        e.preventDefault();
+        if (!prompt_.hidden){ var b = spRow.querySelector('button'); if (b) b.click(); }
+      }
+      return;
+    }
     if (k === 'p' || k === 'P'){
       e.preventDefault();
       present(!document.body.classList.contains('present'));
-      return;
     }
-    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' '){
-      e.preventDefault(); go(idx + 1);
-    } else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp'){
-      e.preventDefault(); go(idx - 1);
-    } else if (k === 'Home'){ e.preventDefault(); go(0); }
+    else if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' '){ e.preventDefault(); go(idx + 1); }
+    else if (k === 'ArrowLeft'  || k === 'ArrowUp'   || k === 'PageUp'){ e.preventDefault(); go(idx - 1); }
+    else if (k === 'Home'){ e.preventDefault(); go(0); }
     else if (k === 'End'){ e.preventDefault(); go(slides.length - 1); }
-    else if (k === 'n' || k === 'N'){ e.preventDefault(); if (audioOn) next(); }
+    else if (k === 'k' || k === 'K'){ e.preventDefault(); toggle(); }
+    else if (k === 'n' || k === 'N'){ e.preventDefault(); step(1, true); }
+    else if (k === 'm' || k === 'M'){ e.preventDefault(); open(!el.root.classList.contains('open')); }
   });
 
   deck.addEventListener('click', function(e){
@@ -538,68 +1121,112 @@ body.present .hint{ opacity:0; pointer-events:none; }
 
   setTimeout(function(){ hint.classList.add('gone'); }, 7000);
 
-  /* ================= the sound toggle ================= */
-  function soundOn(){
-    if (audioOn){ return; }
-    audioOn = true;
-    btn.classList.add('on');
-    btn.setAttribute('aria-label','Turn off sound');
-    cue(idx, true);
-  }
-  function soundOff(){
-    audioOn = false; loadedFor = null;
-    btn.classList.remove('on');
-    btn.setAttribute('aria-label','Turn on sound');
-    stop();
-  }
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    if (audioOn) soundOff(); else soundOn();
-  });
-
-  /* first gesture anywhere cues the slide's song, once */
+  /* the very first click or keypress anywhere is our licence to make sound */
   function firstGesture(){
     document.removeEventListener('click', firstGesture);
     document.removeEventListener('keydown', firstGesture);
-    if (!audioOn) soundOn();
+    if (!started){ started = true; cueForSlide(idx, true); }
   }
   document.addEventListener('click', firstGesture);
   document.addEventListener('keydown', firstGesture);
 
-  /* ================= twinkling stars ================= */
+  paint();
+  el.dur.textContent = '0:00';
+
+  /* ================= the poem, set as large as it will go ================= */
+  var poem = document.getElementById('poem');
+  function fitPoem(){
+    if (!poem) return;
+    if (window.innerWidth <= 640){ poem.style.fontSize = ''; return; }
+    /* binary-search the largest size whose columns still fit the slide */
+    var lo = 12, hi = 32, best = 12;
+    for (var i = 0; i < 9; i++){
+      var mid = (lo + hi) / 2;
+      poem.style.fontSize = mid + 'px';
+      if (poem.scrollWidth <= poem.clientWidth + 1 &&
+          poem.scrollHeight <= poem.clientHeight + 1){ best = mid; lo = mid; }
+      else { hi = mid; }
+    }
+    poem.style.fontSize = best.toFixed(2) + 'px';
+  }
+  fitPoem();
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(fitPoem); }
+  window.addEventListener('load', fitPoem);
+  window.addEventListener('resize', function(){
+    clearTimeout(window.__pf); window.__pf = setTimeout(fitPoem, 160);
+  });
+
+  /* ================= four-pointed stars ================= */
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* an upright four-pointed sparkle — no rotation, ever */
+  function sparkle(ctx, x, y, rx, ry){
+    ctx.beginPath();
+    ctx.moveTo(x, y - ry);
+    ctx.quadraticCurveTo(x, y, x + rx, y);
+    ctx.quadraticCurveTo(x, y, x, y + ry);
+    ctx.quadraticCurveTo(x, y, x - rx, y);
+    ctx.quadraticCurveTo(x, y, x, y - ry);
+    ctx.closePath();
+    ctx.fill();
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll('canvas.stars'), function(cv){
     var ctx = cv.getContext('2d'), stars = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
     var density = parseFloat(cv.dataset.density || '1');
+
+    /* each star lives a slow cycle of its own: a long fade up, a fade back
+       down, then a dark pause before it reappears somewhere new. The cycles
+       are all different lengths, so they arrive in ones and twos rather than
+       pulsing together. */
+    function place(s, w, h){
+      var big = Math.random() < 0.28;
+      s.x  = Math.random() * w;
+      s.y  = Math.random() * h;
+      s.ry = big ? 11 + Math.random() * 6 : 6 + Math.random() * 4.5;
+      s.rx = s.ry * (0.34 + Math.random() * 0.12);
+      s.peak = (big ? 0.52 : 0.62) + Math.random() * 0.22;
+      s.c  = Math.random() < 0.45 ? '197,180,245' : '168,142,230';
+    }
+
     function seed(){
       var w = cv.clientWidth, h = cv.clientHeight;
+      if (!w || !h) return;
       cv.width = w * dpr; cv.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.round(Math.min(46, Math.max(16, (w * h) / 42000)) * density);
+      var n = Math.round(Math.min(16, Math.max(6, (w * h) / 120000)) * density);
       stars = [];
       for (var i = 0; i < n; i++){
-        stars.push({
-          x: Math.random() * w, y: Math.random() * h,
-          r: 0.9 + Math.random() * 1.5,
-          ph: Math.random() * Math.PI * 2,
-          sp: 0.00030 + Math.random() * 0.00050
-        });
+        var s = {
+          on:  4200 + Math.random() * 3600,   /* visible for 4.2 – 7.8s */
+          off: 2600 + Math.random() * 6000,   /* then dark for 2.6 – 8.6s */
+          cyc: -1
+        };
+        s.t0 = -Math.random() * (s.on + s.off);  /* stagger the very first bloom */
+        place(s, w, h);
+        stars.push(s);
       }
     }
+
     function frame(t){
       var w = cv.clientWidth, h = cv.clientHeight;
       ctx.clearRect(0, 0, w, h);
       for (var i = 0; i < stars.length; i++){
         var s = stars[i];
-        var a = reduce ? 0.30 : (Math.sin(t * s.sp + s.ph) + 1) / 2;
-        a = 0.06 + a * a * a * 0.52;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(160,131,225,' + a.toFixed(3) + ')';
-        ctx.fill();
+        var period = s.on + s.off;
+        var e = t - s.t0;
+        var k = Math.floor(e / period);
+        if (k !== s.cyc){ s.cyc = k; place(s, w, h); }   /* a new star, somewhere else */
+        var u = (e - k * period) / s.on;                  /* 0 → 1 across the visible part */
+        if (u > 1) continue;                              /* resting, draw nothing */
+        var a = reduce ? s.peak * 0.75 : Math.pow(Math.sin(Math.PI * u), 1.7) * s.peak;
+        if (a < 0.012) continue;
+        ctx.fillStyle = 'rgba(' + s.c + ',' + a.toFixed(3) + ')';
+        sparkle(ctx, s.x, s.y, s.rx, s.ry);
       }
       requestAnimationFrame(frame);
     }
+
     seed();
     window.addEventListener('resize', function(){
       clearTimeout(cv.__r); cv.__r = setTimeout(seed, 200);
