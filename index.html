@@ -957,9 +957,87 @@ a { color: var(--accent); }
   * { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================================
+   STICKY BAR — the same row as /art and /action, arriving once
+   her name has scrolled past
+   ============================================================ */
+.stickybar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  padding: 14px 0;
+  background: rgba(251, 250, 249, 0.90);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateY(-101%);
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.stickybar.is-in { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.stickybar .row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px 26px;
+  align-items: baseline;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+.stickybar .site {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.stickybar .site:hover { color: var(--accent); }
+.stickybar .navlinks { margin-left: auto; display: flex; gap: 22px; }
+.stickybar .navlink {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.stickybar .navlink:hover { color: var(--ink); }
+.stickybar .navlink:last-child { margin-right: -0.22em; }
+
+@media (max-width: 620px) {
+  .stickybar { padding: 11px 0; }
+  .stickybar .dates { display: none; }
+  .stickybar .navlinks { gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stickybar { transform: none; transition: opacity 0.25s linear; }
+  .stickybar.is-in { transform: none; }
+}
+
+/* The trailing letter-space after the final N sits inside the centred box,
+   so the glyphs read a hair left. Pull it back. */
+.fnav a:last-child { margin-right: -0.22em; }
 </style>
 </head>
 <body>
+
+<!-- ============ STICKY BAR ============ -->
+<div class="stickybar" id="stickybar" aria-hidden="true">
+  <div class="wrap">
+    <div class="row">
+      <a class="site" href="/">Mavis Joshi</a>
+      <span class="dates">2005 &mdash; 2026</span>
+      <nav class="navlinks" aria-label="Sections">
+        <a class="navlink" href="/art">Art</a>
+        <a class="navlink" href="/action">Action</a>
+      </nav>
+    </div>
+  </div>
+</div>
 
 <!-- ============ HEADER ============ -->
 <header class="masthead">
@@ -1026,11 +1104,7 @@ a { color: var(--accent); }
     <div class="illus-row">
       <div class="illus" style="flex: 0.8000"><img src="art/a124.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 1.0000"><img src="art/a060.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
-      <div class="illus" style="flex: 0.8000"><img src="art/a150.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    </div>
-    <div class="illus-row">
       <div class="illus" style="flex: 1.2500"><img src="birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div>
-      <div class="illus" style="flex: 0.6987"><img src="art/a068.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 0.8000"><img src="totoro.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div>
       <div class="illus" style="flex: 0.8000"><img src="art/a143.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
     </div>
@@ -1756,6 +1830,30 @@ a { color: var(--accent); }
     else if (e.key === 'ArrowLeft') show(idx - 1);
     else if (e.key === 'ArrowRight') show(idx + 1);
   });
+})();
+</script>
+
+<script>
+/* The bar arrives when the masthead has gone, and leaves when it returns. */
+(function () {
+  var bar = document.getElementById('stickybar');
+  var mast = document.querySelector('.masthead');
+  if (!bar || !mast) return;
+
+  function set(on) {
+    bar.classList.toggle('is-in', on);
+    bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      set(!entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(mast);
+  } else {
+    var tick = function () { set(window.pageYOffset > mast.offsetHeight); };
+    addEventListener('scroll', tick, { passive: true });
+    tick();
+  }
 })();
 </script>
 
