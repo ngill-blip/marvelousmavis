@@ -327,7 +327,7 @@ footer .row .right { margin-left: auto; }
 .notice { margin-top: 1.1rem; padding: 0; max-width: 620px; }
 .notice p { font-family: var(--serif); font-size: 1.06rem; line-height: 1.55; color: var(--ink-2); }
 
-.lines { margin: 16px 0 0; list-style: none; }
+.lines { margin: 34px 0 0; list-style: none; }
 .lines li:last-child { border-bottom: none; }
 .lines li {
   display: flex;
@@ -413,6 +413,9 @@ footer .row .right { margin-left: auto; }
 .band p { max-width: 34em; }
 .record .who { font-family: var(--serif); font-size: 0.72rem; }
 .lines .meta { font-size: 0.82rem; }
+/* The trailing letter-space after the final N sits inside the centred box,
+   so the glyphs read a hair left. Pull it back. */
+.fnav a:last-child { margin-right: -0.22em; }
 </style>
 </head>
 <body>
@@ -442,11 +445,10 @@ footer .row .right { margin-left: auto; }
 
     <div class="body-copy">
       <p>Her family has preserved what happened there, and is filing a lawsuit to ban the forum in India. Her posts from June and July 2026 are no longer publicly visible on the forum. Screenshots taken at the time record them &mdash; the thoughts she was having, the death she was planning, and the people around her trying to keep her safe. Others were posting the same things alongside her. Some of them are still there.</p>
-      <p>She was not the first to seek help on suicide on the site, but she should be the last.</p>
     </div>
 
   <div class="notice">
-    <p>If you or someone you know is having thoughts of suicide, please reach out. When we intervene at the right time, we may save a precious life.</p>
+    <p>She was not the first to seek help on suicide on the site, but she should be the last. If you or someone you know is having thoughts of suicide, please reach out. When we intervene at the right time, we may save a precious life.</p>
     <ul class="lines">
       <li><span class="name">Tele-MANAS</span><span class="num">14416</span><span class="meta">India &middot; free &middot; 24/7</span></li>
       <li><span class="name">AASRA</span><span class="num">+91 98204 66726</span><span class="meta">India &middot; 24/7</span></li>
