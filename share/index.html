@@ -216,7 +216,13 @@ footer .site {
   font-family: var(--serif);
   font-size: 1rem;
   color: var(--ink);
+  text-decoration: none;
 }
+footer a.site:hover { color: var(--accent); }
+
+/* ART / ACTION sits in the true centre of the row, whatever flanks it */
+footer .row { position: relative; }
+footer .fnav { position: absolute; left: 50%; transform: translateX(-50%); }
 footer .row .right { margin-left: auto; }
 
 .fnav a {
@@ -232,6 +238,7 @@ footer .row .right { margin-left: auto; }
 @media (max-width: 720px) {
   footer .row { gap: 10px 16px; }
   footer .site { margin-right: auto; }
+  footer .fnav { position: static; transform: none; flex: 1 0 100%; text-align: center; }
   footer .row .right { flex: 1 0 100%; margin-left: 0; text-align: center; }
 }
 
@@ -420,7 +427,7 @@ footer .row .right { margin-left: auto; }
   </div>
   <div class="wrap">
     <div class="row">
-      <span class="site">Mavis Joshi</span>
+      <a class="site" href="/">Mavis Joshi</a>
       <span>2005 &mdash; 2026</span>
       <span class="fnav"><a href="/art">Art</a><span class="sep">&middot;</span><a href="/action">Action</a></span>
       <span class="right">Tele-MANAS 14416 &nbsp;&middot;&nbsp; AASRA +91 98204 66726</span>
