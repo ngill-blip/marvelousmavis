@@ -342,7 +342,7 @@ section { padding: clamp(56px, 8vw, 92px) 0; }
 /* ============================================================
    MOMENTS
    ============================================================ */
-.moments { border-top: 1px solid var(--rule); }
+.moments { }
 
 .moment {
   display: grid;
@@ -449,7 +449,13 @@ footer .site {
   font-family: var(--serif);
   font-size: 1rem;
   color: var(--ink);
+  text-decoration: none;
 }
+footer a.site:hover { color: var(--accent); }
+
+/* ART / ACTION sits in the true centre of the row, whatever flanks it */
+footer .row { position: relative; }
+footer .fnav { position: absolute; left: 50%; transform: translateX(-50%); }
 
 footer .row .right { margin-left: auto; }
 
@@ -466,6 +472,7 @@ footer .row .right { margin-left: auto; }
 @media (max-width: 720px) {
   footer .row { gap: 10px 16px; }
   footer .site { margin-right: auto; }          /* name left, years pushed right */
+  footer .fnav { position: static; transform: none; flex: 1 0 100%; text-align: center; }
   footer .row .right {
     flex: 1 0 100%;
     margin-left: 0;
@@ -1017,21 +1024,13 @@ a { color: var(--accent); }
 <section class="moments">
   <div class="illus-grid">
     <div class="illus-row">
-      <div class="illus" style="flex: 1.2403"><img src="my-happy-family.jpg" width="1280" height="1032" loading="lazy" decoding="async" alt="My Happy Family, a drawing by Mavis"></div>
-      <div class="illus" style="flex: 1.4311"><img src="art/a076.jpg" width="1600" height="1118" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 0.8000"><img src="art/a124.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
-    </div>
-    <div class="illus-row">
       <div class="illus" style="flex: 1.0000"><img src="art/a060.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 0.8000"><img src="art/a150.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
     </div>
     <div class="illus-row">
-      <div class="illus" style="flex: 1.3400"><img src="art/a044.jpg" width="1600" height="1194" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 1.2500"><img src="birthday-gift-2026.jpg" width="1280" height="1024" loading="lazy" decoding="async" alt="Birthday Gift 2026, a drawing by Mavis"></div>
       <div class="illus" style="flex: 0.6987"><img src="art/a068.jpg" width="1118" height="1600" loading="lazy" decoding="async" alt=""></div>
-    </div>
-    <div class="illus-row">
-      <div class="illus" style="flex: 1.0526"><img src="art/a075.jpg" width="1600" height="1520" loading="lazy" decoding="async" alt=""></div>
       <div class="illus" style="flex: 0.8000"><img src="totoro.jpg" width="1024" height="1280" loading="lazy" decoding="async" alt="A drawing by Mavis of Totoro carrying two children and a cat"></div>
       <div class="illus" style="flex: 0.8000"><img src="art/a143.jpg" width="1280" height="1600" loading="lazy" decoding="async" alt=""></div>
     </div>
@@ -1318,16 +1317,17 @@ a { color: var(--accent); }
 <!-- ============ PHOTOGRAPHS ============ -->
 <section class="photos">
   <div class="photostrip">
-      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="wwimf-poster.jpg" aria-label="What Was I Made For, a film by Mavis"><source src="wwimf.mp4" type="video/mp4"></video></div>
+      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="wwimf-poster.jpg" aria-label="What Was I Made For"><source src="wwimf.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:229.8px"><img src="photos/p049.jpg" width="230" height="207" loading="lazy" decoding="async" alt=""><img src="photos/p079.jpg" width="230" height="409" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:329.6px"><img src="photos/p027.jpg" width="330" height="330" loading="lazy" decoding="async" alt=""><img src="photos/j030.jpg" width="330" height="286" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:264.3px"><img src="photos/p131.jpg" width="264" height="418" loading="lazy" decoding="async" alt=""><img src="photos/h012.jpg" width="264" height="198" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:823.2px"><img src="photos/p119.jpg" width="823" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/k022.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p184.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p090.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
-      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="pondicherry-poster.jpg" aria-label="Pondicherry, filmed by Mavis"><source src="pondicherry.mp4" type="video/mp4"></video></div>
+      <div class="pvid" style="width:349px"><video controls preload="metadata" playsinline poster="pondicherry-poster.jpg" aria-label="Pondicherry"><source src="pondicherry.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:159.4px"><img src="photos/p066.jpg" width="159" height="283" loading="lazy" decoding="async" alt=""><img src="photos/p145.jpg" width="159" height="169" loading="lazy" decoding="async" alt=""><img src="photos/p062.jpg" width="159" height="160" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:365.9px"><img src="photos/p204.jpg" width="366" height="250" loading="lazy" decoding="async" alt=""><img src="photos/p146.jpg" width="366" height="366" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:348.8px"><video controls preload="metadata" playsinline poster="videos/20250712-175131-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/20250712-175131.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:221.8px"><img src="photos/p035.jpg" width="222" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p147.jpg" width="222" height="222" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:435.9px"><img src="photos/p122.jpg" width="436" height="289" loading="lazy" decoding="async" alt=""><img src="photos/p195.jpg" width="436" height="327" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/j027.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
@@ -1337,6 +1337,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:230.9px"><img src="photos/p202.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p052.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:325.9px"><img src="photos/p003.jpg" width="326" height="183" loading="lazy" decoding="async" alt=""><img src="photos/p120.jpg" width="326" height="433" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:264.0px"><img src="photos/p159.jpg" width="264" height="352" loading="lazy" decoding="async" alt=""><img src="photos/p060.jpg" width="264" height="264" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:348.8px"><video controls preload="metadata" playsinline poster="videos/20250719-151231-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/20250719-151231.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:394.2px"><img src="photos/p001.jpg" width="394" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p031.jpg" width="394" height="222" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:469.3px"><img src="photos/p141.jpg" width="469" height="264" loading="lazy" decoding="async" alt=""><img src="photos/p173.jpg" width="469" height="352" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:296.5px"><img src="photos/p114.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/h018.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
@@ -1347,6 +1348,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:348.8px"><img src="photos/p006.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:263.2px"><img src="photos/h023.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""><img src="photos/p030.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:362.7px"><img src="photos/p102.jpg" width="363" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p214.jpg" width="363" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p171.jpg" width="363" height="204" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:348.8px"><video controls preload="metadata" playsinline poster="videos/20260218-171248-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/20260218-171248.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:465.0px"><img src="photos/p056.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:189.8px"><img src="photos/p138.jpg" width="190" height="253" loading="lazy" decoding="async" alt=""><img src="photos/p105.jpg" width="190" height="252" loading="lazy" decoding="async" alt=""><img src="photos/p101.jpg" width="190" height="107" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:263.2px"><img src="photos/h027.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""><img src="photos/p193.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""></div>
@@ -1357,6 +1359,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:350.8px"><img src="photos/p002.jpg" width="351" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:216.0px"><img src="photos/p053.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""><img src="photos/p207.jpg" width="216" height="288" loading="lazy" decoding="async" alt=""><img src="photos/p103.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:295.7px"><img src="photos/p123.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p196.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:350.7px"><video controls preload="metadata" playsinline poster="videos/vid-20250805-wa0039-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20250805-wa0039.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:348.8px"><img src="photos/k002.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:263.2px"><img src="photos/k003.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""><img src="photos/h021.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p190.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
@@ -1366,6 +1369,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:263.2px"><img src="photos/p078.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""><img src="photos/h028.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/k014.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/h016.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:198.0px"><img src="photos/k001.jpg" width="198" height="352" loading="lazy" decoding="async" alt=""><img src="photos/p206.jpg" width="198" height="264" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:348.8px"><video controls preload="metadata" playsinline poster="videos/vid-20251020-wa0042-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20251020-wa0042.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:296.5px"><img src="photos/p117.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/h013.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/p094.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p019.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
@@ -1376,6 +1380,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:410.7px"><img src="photos/p201.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/h011.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p134.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p128.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:325.9px"><img src="photos/p106.jpg" width="326" height="433" loading="lazy" decoding="async" alt=""><img src="photos/p160.jpg" width="326" height="183" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/vid-20251027-wa0006-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20251027-wa0006.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:263.2px"><img src="photos/p007.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""><img src="photos/p051.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/k000.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/p150.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p017.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
@@ -1386,6 +1391,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:295.7px"><img src="photos/p156.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p113.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/h026.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:263.2px"><img src="photos/h019.jpg" width="263" height="468" loading="lazy" decoding="async" alt=""><img src="photos/p180.jpg" width="263" height="148" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/vid-20260816-wa0006-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20260816-wa0006.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p084.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/p086.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p144.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p152.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p133.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
@@ -1396,6 +1402,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:231.5px"><img src="photos/p041.jpg" width="231" height="309" loading="lazy" decoding="async" alt=""><img src="photos/p118.jpg" width="231" height="307" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/h025.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p165.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/vid-20260816-wa0082-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20260816-wa0082.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:216.0px"><img src="photos/k004.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""><img src="photos/p039.jpg" width="216" height="288" loading="lazy" decoding="async" alt=""><img src="photos/h030.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:295.7px"><img src="photos/p032.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p185.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/p136.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
@@ -1405,6 +1412,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:311.5px"><img src="photos/p200.jpg" width="312" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:216.0px"><img src="photos/p149.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""><img src="photos/p163.jpg" width="216" height="162" loading="lazy" decoding="async" alt=""><img src="photos/p034.jpg" width="216" height="288" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/p097.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p009.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:350.7px"><video controls preload="metadata" playsinline poster="videos/video-20260314-103710-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/video-20260314-103710.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:826.7px"><img src="photos/k016.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:243.7px"><img src="photos/p026.jpg" width="244" height="433" loading="lazy" decoding="async" alt=""><img src="photos/h009.jpg" width="244" height="183" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:296.5px"><img src="photos/p110.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p042.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
@@ -1415,6 +1423,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:243.7px"><img src="photos/p183.jpg" width="244" height="183" loading="lazy" decoding="async" alt=""><img src="photos/h022.jpg" width="244" height="433" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p085.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/h029.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p186.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/vid-20260210-150058-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/vid-20260210-150058.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p162.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p095.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:348.8px"><img src="photos/j028.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:272.0px"><img src="photos/p072.jpg" width="272" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p013.jpg" width="272" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p073.jpg" width="272" height="204" loading="lazy" decoding="async" alt=""></div>
@@ -1425,6 +1434,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:826.7px"><img src="photos/p187.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:179.1px"><img src="photos/p011.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""><img src="photos/p089.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""><img src="photos/p175.jpg" width="179" height="134" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:295.7px"><img src="photos/p139.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""><img src="photos/p000.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/clip-f701a8fa-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/clip-f701a8fa.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:348.8px"><img src="photos/j017.jpg" width="349" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:243.7px"><img src="photos/p143.jpg" width="244" height="183" loading="lazy" decoding="async" alt=""><img src="photos/p197.jpg" width="244" height="433" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/p074.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p167.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
@@ -1434,6 +1444,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:826.7px"><img src="photos/p169.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:826.7px"><img src="photos/p137.jpg" width="827" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:179.1px"><img src="photos/p168.jpg" width="179" height="134" loading="lazy" decoding="async" alt=""><img src="photos/p192.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""><img src="photos/p070.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:348.8px"><video controls preload="metadata" playsinline poster="videos/clip-397d7f19-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/clip-397d7f19.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:295.7px"><img src="photos/p093.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""><img src="photos/p021.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:410.7px"><img src="photos/p020.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""><img src="photos/h017.jpg" width="411" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:179.1px"><img src="photos/p081.jpg" width="179" height="134" loading="lazy" decoding="async" alt=""><img src="photos/p010.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""><img src="photos/h003.jpg" width="179" height="239" loading="lazy" decoding="async" alt=""></div>
@@ -1444,6 +1455,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:295.7px"><img src="photos/p025.jpg" width="296" height="222" loading="lazy" decoding="async" alt=""><img src="photos/p158.jpg" width="296" height="394" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p098.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p068.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:153.0px"><img src="photos/p100.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p043.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/h007.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:520px"><video controls preload="metadata" playsinline poster="videos/clip-8be16540-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/clip-8be16540.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p155.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p054.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/p067.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p189.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p125.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
@@ -1454,6 +1466,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:153.0px"><img src="photos/h001.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p099.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/h015.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p037.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p059.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/h000.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:427.2px"><video controls preload="metadata" playsinline poster="videos/screenrec-20260808-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/screenrec-20260808.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p154.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p211.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/k009.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p212.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p024.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
@@ -1463,6 +1476,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:231.0px"><img src="photos/p033.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p166.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/p140.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p092.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/h008.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
+      <div class="pvid" style="width:465px"><video controls preload="metadata" playsinline poster="videos/img-4773-poster.jpg" aria-label="A video from Mavis&rsquo;s life"><source src="videos/img-4773.mp4" type="video/mp4"></video></div>
       <div class="pcol" style="width:153.0px"><img src="photos/p170.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/p130.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""><img src="photos/k012.jpg" width="153" height="204" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p112.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p045.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/p116.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
@@ -1473,7 +1487,7 @@ a { color: var(--accent); }
       <div class="pcol" style="width:231.0px"><img src="photos/k006.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p209.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:465.0px"><img src="photos/k023.jpg" width="465" height="620" loading="lazy" decoding="async" alt=""></div>
       <div class="pcol" style="width:231.0px"><img src="photos/p040.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""><img src="photos/p127.jpg" width="231" height="308" loading="lazy" decoding="async" alt=""></div>
-  </div>
+    </div>
 </section>
 
 <!-- ============ CONTRIBUTE ============ -->
@@ -1491,7 +1505,7 @@ a { color: var(--accent); }
   </div>
   <div class="wrap">
     <div class="row">
-      <span class="site">Mavis Joshi</span>
+      <a class="site" href="/">Mavis Joshi</a>
       <span>2005 &mdash; 2026</span>
       <span class="fnav"><a href="/art">Art</a><span class="sep">&middot;</span><a href="/action">Action</a></span>
       <span class="right">Tele-MANAS 14416 &nbsp;&middot;&nbsp; AASRA +91 98204 66726</span>
